@@ -1,0 +1,609 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #FAF7F2;
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(255, 222, 0, 0.08) 0px, transparent 40%),
+      radial-gradient(at 90% 35%, rgba(0, 210, 254, 0.08) 0px, transparent 45%),
+      radial-gradient(at 25% 75%, rgba(139, 92, 246, 0.06) 0px, transparent 40%),
+      radial-gradient(at 80% 90%, rgba(255, 77, 77, 0.05) 0px, transparent 40%),
+      radial-gradient(#d1d5db 1.2px, transparent 1.2px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+    background-attachment: fixed;
+    color: #121212;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* Base Neo-Brutalist Color Tokens & Shadows */
+:root {
+  --color-neo-bg: #FAF7F2;
+  --color-neo-paper: #F4F0EA;
+  --color-neo-card: #FFFFFF;
+  --color-neo-yellow: #FFDE00;
+  --color-neo-yellow-hover: #E5C700;
+  --color-neo-red: #FF4D4D;
+  --color-neo-blue: #2563EB;
+  --color-neo-cyan: #00D2FE;
+  --color-neo-green: #10B981;
+  --color-neo-purple: #8B5CF6;
+  --color-neo-orange: #FF8800;
+  --color-neo-dark: #121212;
+  --color-neo-subtle: #6B7280;
+}
+
+/* ==========================================================
+   THEME 1: SOLAR (Warm Neo-Brutalist Light)
+   ========================================================== */
+.theme-solar body {
+  background-color: #FAF7F2 !important;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(255, 222, 0, 0.08) 0px, transparent 40%),
+    radial-gradient(at 90% 35%, rgba(0, 210, 254, 0.08) 0px, transparent 45%),
+    radial-gradient(at 25% 75%, rgba(139, 92, 246, 0.06) 0px, transparent 40%),
+    radial-gradient(at 80% 90%, rgba(255, 77, 77, 0.05) 0px, transparent 40%),
+    radial-gradient(#d1d5db 1.2px, transparent 1.2px) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 24px 24px !important;
+  background-attachment: fixed !important;
+  color: #121212 !important;
+}
+
+/* ==========================================================
+   THEME 2: CYBER (Obsidian Velvet Matrix Dark)
+   ========================================================== */
+.theme-cyber {
+  --color-neo-bg: #0A0A0F;
+  --color-neo-paper: #181826;
+  --color-neo-card: #12121C;
+  --color-neo-dark: #FFFFFF;
+  --color-neo-subtle: #94A3B8;
+}
+
+.theme-cyber body {
+  background-color: #0A0A0F !important;
+  background-image: 
+    radial-gradient(at 15% 20%, rgba(0, 255, 102, 0.08) 0px, transparent 48%),
+    radial-gradient(at 85% 35%, rgba(37, 99, 235, 0.10) 0px, transparent 52%),
+    radial-gradient(at 25% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(0, 245, 255, 0.06) 0px, transparent 45%),
+    radial-gradient(#222234 1.4px, transparent 1.4px) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 24px 24px !important;
+  background-attachment: fixed !important;
+  color: #F8FAFC !important;
+}
+
+.theme-cyber section {
+  background-color: transparent !important;
+  border-color: #272738 !important;
+}
+
+.theme-cyber .bg-\[\#FAF7F2\] {
+  background-color: rgba(14, 14, 22, 0.7) !important;
+}
+
+.theme-cyber .neo-box {
+  background: linear-gradient(135deg, rgba(20, 20, 32, 0.86) 0%, rgba(12, 12, 22, 0.74) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 4px 4px 0px #000000, 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2) !important;
+  color: #F8FAFC !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.theme-cyber .neo-box:hover {
+  transform: translate(-3px, -3px) !important;
+  border-color: #00FF66 !important;
+  background: linear-gradient(135deg, rgba(26, 26, 44, 0.92) 0%, rgba(16, 16, 30, 0.82) 100%) !important;
+  box-shadow: 6px 6px 0px #000000, 0 0 24px rgba(0, 255, 102, 0.28), inset 0 1px 2px 0 rgba(0, 255, 102, 0.35) !important;
+}
+
+.theme-cyber .bg-white {
+  background: linear-gradient(135deg, rgba(22, 22, 36, 0.86) 0%, rgba(14, 14, 26, 0.74) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #F8FAFC !important;
+}
+
+.theme-cyber .bg-neo-paper {
+  background-color: rgba(30, 30, 48, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #F1F5F9 !important;
+}
+
+.theme-cyber .text-\[\#121212\] { color: #F8FAFC !important; }
+.theme-cyber .text-neo-dark { color: #CBD5E1 !important; }
+.theme-cyber .text-neo-subtle { color: #94A3B8 !important; }
+.theme-cyber .border-\[\#121212\] { border-color: #2D2D42 !important; }
+.theme-cyber .border-black { border-color: #2D2D42 !important; }
+.theme-cyber .shadow-brutal-sm { box-shadow: 2px 2px 0px #000000 !important; }
+.theme-cyber .shadow-brutal { box-shadow: 4px 4px 0px #000000 !important; }
+.theme-cyber .shadow-brutal-lg { box-shadow: 6px 6px 0px #000000 !important; }
+
+/* ==========================================================
+   THEME 3: HYPER (Ultra-Vivid Electric Cyber Matrix)
+   ========================================================== */
+.theme-hyper {
+  --color-neo-bg: #0C0A17;
+  --color-neo-paper: #18142D;
+  --color-neo-card: #141126;
+  --color-neo-yellow: #FFE600;
+  --color-neo-red: #FF0055;
+  --color-neo-blue: #00D2FE;
+  --color-neo-cyan: #00F5FF;
+  --color-neo-green: #39FF14;
+  --color-neo-purple: #B026FF;
+  --color-neo-dark: #FFFFFF;
+  --color-neo-subtle: #C4B5FD;
+}
+
+.theme-hyper body {
+  background-color: #0C0A17 !important;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(176, 38, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(#00F5FF 1.2px, transparent 1.2px) !important;
+  background-size: 100% 100%, 24px 24px !important;
+  color: #FFFFFF !important;
+}
+
+.theme-hyper section {
+  background-color: transparent !important;
+  border-color: rgba(176, 38, 255, 0.4) !important;
+}
+
+.theme-hyper .bg-\[\#FAF7F2\] {
+  background-color: #0C0A17 !important;
+}
+
+/* Hyper Vibrant Cyber Cards with Electric Neon Glass Borders */
+.theme-hyper .neo-box {
+  background-color: rgba(21, 17, 40, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 2px solid #00F5FF !important;
+  box-shadow: 4px 4px 0px #FF0055, 0 0 20px rgba(0, 245, 255, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2) !important;
+  color: #FFFFFF !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.theme-hyper .neo-box:hover {
+  transform: translate(-3px, -3px) !important;
+  border-color: #FFE600 !important;
+  box-shadow: 6px 6px 0px #00F5FF, 0 0 30px rgba(255, 230, 0, 0.4), inset 0 1px 2px 0 rgba(255, 230, 0, 0.5) !important;
+}
+
+.theme-hyper .bg-white {
+  background-color: rgba(26, 21, 53, 0.88) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  color: #FFFFFF !important;
+}
+
+.theme-hyper .bg-neo-paper {
+  background-color: rgba(35, 28, 68, 0.82) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #F5F3FF !important;
+}
+
+.theme-hyper .text-\[\#121212\] { color: #FFFFFF !important; }
+.theme-hyper .text-neo-dark { color: #E0E7FF !important; }
+.theme-hyper .text-neo-subtle { color: #C4B5FD !important; }
+.theme-hyper .border-\[\#121212\] { border-color: rgba(0, 245, 255, 0.4) !important; }
+.theme-hyper .border-black { border-color: rgba(255, 0, 85, 0.5) !important; }
+
+/* Hyper Neon Buttons */
+.theme-hyper .neo-btn {
+  border: 2px solid #00F5FF !important;
+  box-shadow: 3px 3px 0px #FF0055 !important;
+  transition: all 0.15s ease !important;
+}
+
+.theme-hyper .neo-btn:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0px #FFE600, 0 0 15px rgba(0, 245, 255, 0.4) !important;
+}
+
+.theme-hyper .neo-btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px #FF0055 !important;
+}
+
+/* Hyper Electric Badges */
+.theme-hyper .neo-badge {
+  border-color: #00F5FF !important;
+  box-shadow: 2px 2px 0px #FF0055 !important;
+}
+
+/* ==========================================================
+   THEME 4: MONO (Editorial Luxury Minimalist / Playfair Serif)
+   ========================================================== */
+.theme-mono {
+  --color-neo-bg: #FAFAFA;
+  --color-neo-paper: #F4F4F5;
+  --color-neo-card: #FFFFFF;
+  --color-neo-dark: #171717;
+  --color-neo-subtle: #737373;
+}
+
+.theme-mono body {
+  background-color: #FAFAFA !important;
+  background-image: none !important;
+  color: #171717 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Editorial Serif Headings */
+.theme-mono h1,
+.theme-mono h2,
+.theme-mono h3,
+.theme-mono .font-grotesk {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.theme-mono section {
+  background-color: #FAFAFA !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-mono .bg-\[\#FAF7F2\] {
+  background-color: #FAFAFA !important;
+}
+
+/* Editorial Luxury Rounded Glass Cards */
+.theme-mono .neo-box {
+  background-color: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.04), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8) !important;
+  color: #171717 !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.theme-mono .neo-box:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06), inset 0 1px 2px 0 rgba(255, 255, 255, 1) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.theme-mono .bg-white {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  color: #171717 !important;
+  border-radius: 1.25rem;
+}
+
+.theme-mono .bg-neo-paper {
+  background-color: rgba(244, 244, 245, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #171717 !important;
+  border-radius: 1rem;
+}
+
+.theme-mono .text-\[\#121212\] { color: #171717 !important; }
+.theme-mono .text-neo-dark { color: #525252 !important; }
+.theme-mono .text-neo-subtle { color: #737373 !important; }
+.theme-mono .border-\[\#121212\] { border-color: rgba(0, 0, 0, 0.08) !important; }
+.theme-mono .border-black { border-color: rgba(0, 0, 0, 0.1) !important; }
+.theme-mono .shadow-brutal-sm { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important; }
+.theme-mono .shadow-brutal { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important; }
+.theme-mono .shadow-brutal-lg { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important; }
+
+/* Smooth Rounded-Full Pill Buttons */
+.theme-mono .neo-btn {
+  border-radius: 9999px !important;
+  border: 1px solid #18181A !important;
+  background-color: #18181A !important;
+  color: #FFFFFF !important;
+  padding: 0.65rem 1.5rem !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.theme-mono .neo-btn:hover {
+  transform: scale(1.04) !important;
+  background-color: #000000 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16) !important;
+}
+
+.theme-mono .neo-btn.bg-white {
+  background-color: #FFFFFF !important;
+  color: #18181A !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-mono .neo-btn.bg-white:hover {
+  background-color: #F4F4F5 !important;
+  color: #000000 !important;
+}
+
+/* Minimalist Editorial Pill Badges */
+.theme-mono .neo-badge {
+  border-radius: 9999px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background-color: #F4F4F5 !important;
+  color: #18181B !important;
+  box-shadow: none !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.75rem !important;
+  text-transform: none !important;
+  padding: 0.3rem 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+/* Mono Rounded Pill Navbar */
+.theme-mono header > div {
+  border-radius: 9999px !important;
+}
+
+.theme-mono header nav {
+  border-radius: 9999px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.theme-mono header nav button {
+  border-radius: 9999px !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* Monochromatic Accent Inversions */
+.theme-mono .bg-neo-yellow,
+.theme-mono .bg-neo-cyan,
+.theme-mono .bg-neo-green {
+  background-color: #18181A !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px !important;
+}
+
+.theme-mono .bg-neo-red,
+.theme-mono .bg-neo-purple {
+  background-color: #F4F4F5 !important;
+  color: #18181A !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 9999px !important;
+}
+
+.theme-mono .text-neo-yellow,
+.theme-mono .text-neo-cyan,
+.theme-mono .text-neo-red,
+.theme-mono .text-neo-green,
+.theme-mono .text-neo-purple,
+.theme-mono .text-neo-blue {
+  color: #18181A !important;
+}
+
+/* Global Accent Utilities */
+.bg-neo-yellow { background-color: #FFDE00; }
+.bg-neo-yellowHover:hover { background-color: #E5C700; }
+.bg-neo-red { background-color: #FF4D4D; }
+.bg-neo-blue { background-color: #2563EB; }
+.bg-neo-cyan { background-color: #00D2FE; }
+.bg-neo-green { background-color: #10B981; }
+.bg-neo-purple { background-color: #8B5CF6; }
+.bg-neo-orange { background-color: #FF8800; }
+.bg-neo-paper { background-color: #F4F0EA; }
+
+.text-neo-yellow { color: #FFDE00; }
+.text-neo-red { color: #FF4D4D; }
+.text-neo-blue { color: #2563EB; }
+.text-neo-cyan { color: #00D2FE; }
+.text-neo-green { color: #10B981; }
+.text-neo-purple { color: #8B5CF6; }
+.text-neo-subtle { color: #6B7280; }
+.text-neo-dark { color: #121212; }
+
+/* Custom Shadows */
+.shadow-brutal-sm { box-shadow: 2px 2px 0px #121212; }
+.shadow-brutal { box-shadow: 4px 4px 0px #121212; }
+.shadow-brutal-lg { box-shadow: 6px 6px 0px #121212; }
+.shadow-brutal-xl { box-shadow: 8px 8px 0px #121212; }
+
+/* Custom Neo-Brutalist Utility Classes with Frosted Glass */
+.neo-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.76) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 2.5px solid #121212;
+  box-shadow: 4px 4px 0px #121212, inset 0 1px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neo-box:hover {
+  transform: translate(-2px, -2px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.84) 100%);
+  box-shadow: 6px 6px 0px #121212, inset 0 1px 3px 0 rgba(255, 255, 255, 1);
+}
+
+/* Frosted Glass Utilities */
+.neo-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.72) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 2px solid #121212;
+  box-shadow: 3px 3px 0px #121212, inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.neo-glass-subtle {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1.5px solid #121212;
+  box-shadow: 2px 2px 0px #121212, inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.76) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 2.5px solid #121212;
+  box-shadow: 4px 4px 0px #121212, inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.theme-cyber .neo-glass {
+  background: linear-gradient(135deg, rgba(24, 24, 38, 0.86) 0%, rgba(14, 14, 26, 0.74) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 3px 3px 0px #000000, inset 0 1px 1.5px rgba(255, 255, 255, 0.2) !important;
+  color: #F8FAFC !important;
+}
+
+.theme-cyber .neo-glass-subtle {
+  background: rgba(26, 26, 42, 0.68) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 2px 2px 0px #000000, inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+  color: #F8FAFC !important;
+}
+
+.theme-cyber .glass-panel {
+  background: linear-gradient(135deg, rgba(22, 22, 36, 0.90) 0%, rgba(14, 14, 26, 0.80) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 4px 4px 0px #000000, 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.2) !important;
+  color: #F8FAFC !important;
+}
+
+.neo-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2.5px solid #121212;
+  box-shadow: 4px 4px 0px #121212, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.14s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #121212, inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.neo-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212, inset 0 1px 0.5px rgba(255, 255, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+  border-left: 2px solid #121212;
+}
+
+.theme-cyber ::-webkit-scrollbar-track {
+  background: #0A0A0F;
+  border-left: 2px solid #272738;
+}
+
+.theme-hyper ::-webkit-scrollbar-track {
+  background: #0D0B18;
+  border-left: 2px solid #4338CA;
+}
+
+.theme-mono ::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-left: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFDE00;
+  border: 2px solid #121212;
+}
+
+.theme-cyber ::-webkit-scrollbar-thumb {
+  background: #00FF66;
+  border: 2px solid #000000;
+}
+
+.theme-hyper ::-webkit-scrollbar-thumb {
+  background: #FF007F;
+  border: 2px solid #000000;
+}
+
+.theme-mono ::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 2px solid #000000;
+}
+
+/* ==========================================================
+   MOBILE UX POLISH, GLASSMORPHISM & IPHONE SPRING MOTION
+   ========================================================== */
+@media (max-width: 768px) {
+  /* Safe area for devices with bottom gesture navigation */
+  .safe-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  /* Smooth momentum touch scrolling & buttery iPhone physics */
+  * {
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Touch Target Minimum (44px) on interactive buttons */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* iOS Frosted Glass & Translucent Surfaces */
+  .neo-box {
+    backdrop-filter: blur(18px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(190%) !important;
+  }
+
+  .neo-box.bg-white {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.74) 100%) !important;
+    backdrop-filter: blur(18px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(190%) !important;
+  }
+}
