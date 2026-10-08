@@ -5,9 +5,9 @@
 export const PERSONAL = {
   name: 'Om Khade',
   nameShort: 'OM KHADE',
-  title: 'Full Stack Developer | AI & Data Science Student',
+  title: 'Full Stack Developer',
   roleSubtitle: 'B.Tech CSE (AI & DS) — Sanjay Ghodawat University',
-  headline: 'FULL STACK DEVELOPER — BUILDING RELIABLE, USER-FOCUSED SOFTWARE',
+  headline: 'FULL STACK DEVELOPER — CRAFTING AGENTIC AI & FULL-STACK SYSTEMS',
   tagline: 'B.Tech CSE (AI & Data Science) student building full-stack applications, backend APIs, database-driven systems and AI-powered applications.',
   email: 'omkhade09@gmail.com',
   phone: '+91 7588021256',

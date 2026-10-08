@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     {PERSONAL.name}
                   </h1>
                   <p className="font-sans text-xs sm:text-base text-neutral-600 font-medium tracking-wide">
-                    Full Stack Intern • AI & Data Science Student • <span className="font-semibold text-black">CGPA {EDUCATION.cgpa}</span>
+                    Full Stack Developer • AI &amp; Full-Stack Systems • <span className="font-semibold text-black">CGPA {EDUCATION.cgpa}</span>
                   </p>
                 </div>
               ) : (
@@ -145,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   >
                     DEVELOPER
                   </motion.span>{' '}
-                  & AI / DATA SCIENCE STUDENT.
+                  — CRAFTING AGENTIC AI &amp; FULL-STACK SYSTEMS.
                 </h1>
               )}
             </motion.div>

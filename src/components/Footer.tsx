@@ -191,7 +191,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 📧 <a href={`mailto:${PERSONAL.email}`} className="font-bold hover:text-neo-blue underline">{PERSONAL.email}</a>
               </p>
               <p>
-                📞 <a href={`tel:${PERSONAL.phone}`} className="font-bold hover:text-neo-blue underline">+91 {PERSONAL.phone}</a>
+                📞 <a href={`tel:${PERSONAL.phone.replace(/\s+/g, '')}`} className="font-bold hover:text-neo-blue underline">{PERSONAL.phone}</a>
               </p>
             </div>
 
