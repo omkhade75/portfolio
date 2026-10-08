@@ -24,7 +24,6 @@ import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { ScrollProgress } from './components/ScrollProgress';
-import { CustomCursor } from './components/CustomCursor';
 
 export function App() {
   // Global modal state for contact & interview scheduling
@@ -36,8 +35,6 @@ export function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-[#FAF7F2] dark:bg-[#0B0B0F] text-[#121212] dark:text-[#F3F4F6] font-body selection:bg-[#FFDE00] selection:text-[#121212] relative overflow-x-clip transition-colors duration-200">
-        {/* Desktop-only subtle custom cursor */}
-        <CustomCursor />
 
         {/* Right edge vertical scroll progress indicator */}
         <ScrollProgress />

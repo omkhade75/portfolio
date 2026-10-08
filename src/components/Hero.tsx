@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                       CGPA {EDUCATION.cgpa}
                     </span>
                     <span className="neo-badge bg-neo-purple text-white text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5">
-                      GEN SEC • E-CELL
+                      GENERAL SECRETARY • E-CELL
                     </span>
                     <span className="neo-badge bg-neo-cyan text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 text-[#121212]">
                       MHT-CET {EDUCATION.mhtCetPercentile}%ile
@@ -238,11 +238,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                 </span>
               </div>
 
-              <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform">
-                <span className="font-grotesk font-black text-base sm:text-lg text-[#121212] block leading-none truncate">
-                  GEN SEC
+              <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform flex flex-col justify-center">
+                <span className="font-grotesk font-black text-xs sm:text-sm text-[#121212] block leading-snug">
+                  GENERAL SECRETARY
                 </span>
-                <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider truncate block">
+                <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider block mt-0.5">
                   E-Cell (SGU)
                 </span>
               </div>
