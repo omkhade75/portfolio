@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               className="neo-btn bg-neo-red text-white hover:bg-red-600 text-xs sm:text-sm px-5 py-3 font-grotesk font-bold"
             >
               <Mail className="w-4 h-4" />
-              <span>SCHEDULE INTERVIEW</span>
+              <span>LET'S TALK</span>
             </motion.button>
           </div>
         </motion.div>

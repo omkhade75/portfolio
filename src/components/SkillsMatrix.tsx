@@ -19,7 +19,7 @@ export const SkillsMatrix: React.FC = () => {
               TECHNICAL <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block">STACK.</span>
             </>
           }
-          description="Languages, frameworks, databases, and AI engineering tools used across production projects, academic builds, and competitive hackathons."
+          description="Languages, frameworks, databases, and AI engineering tools used across deployed projects, academic builds, and competitive hackathons."
         />
 
         {/* Categories Grid */}

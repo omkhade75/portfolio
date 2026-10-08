@@ -24,7 +24,7 @@ export const Projects: React.FC = () => {
         {/* Section Header */}
         <SectionHeader
           index="01 // FEATURED SYSTEMS"
-          badge="PRODUCTION SOFTWARE & ARCHITECTURES"
+          badge="FEATURED PROJECTS & ARCHITECTURES"
           badgeColor="bg-neo-yellow text-[#121212]"
           title={
             <>
@@ -89,7 +89,7 @@ export const Projects: React.FC = () => {
                       </span>
                       <span className="neo-badge bg-neo-green text-[#121212] text-[9px] sm:text-[10px] font-mono font-bold ml-auto sm:ml-0 flex items-center gap-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-                        LIVE PRODUCTION
+                        LIVE DEMO
                       </span>
                     </div>
 

@@ -227,7 +227,7 @@ export const SystemArchitecture: React.FC = () => {
           <div className="bg-[#121212] text-white p-3 sm:p-4 font-mono text-xs flex items-center gap-2.5 border-2 border-[#121212] shadow-brutal-sm">
             <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-neo-green shrink-0" />
             <div className="truncate">
-              <span className="text-neo-yellow font-bold uppercase mr-1.5">MEASURABLE OUTCOME:</span>
+              <span className="text-neo-yellow font-bold uppercase mr-1.5">ENGINEERING OUTCOME:</span>
               <span className="font-medium text-gray-200">{currentSystem.impact}</span>
             </div>
           </div>
