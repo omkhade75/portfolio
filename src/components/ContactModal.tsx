@@ -114,6 +114,24 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 +91 7588021256
               </a>
             </div>
+            <div className="font-mono text-xs font-bold text-[#121212] flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href="https://github.com/omkhade75"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline text-neo-blue"
+              >
+                → GitHub Profile
+              </a>
+              <a
+                href="https://www.linkedin.com/in/om-khade-596295372/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline text-neo-blue"
+              >
+                → LinkedIn Profile
+              </a>
+            </div>
           </div>
 
           <button

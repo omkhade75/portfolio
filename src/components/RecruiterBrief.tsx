@@ -176,7 +176,13 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
                 </span>
               </button>
               <span className="hidden sm:inline">•</span>
-              <span>📞 {PERSONAL.phone}</span>
+              <a
+                href={`tel:${PERSONAL.phone}`}
+                className="hover:text-neo-blue transition-colors"
+                title={`Call ${PERSONAL.phone}`}
+              >
+                📞 {PERSONAL.phone}
+              </a>
               <span className="hidden sm:inline">•</span>
               <span>📍 {PERSONAL.location}</span>
             </div>

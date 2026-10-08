@@ -186,6 +186,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               </motion.button>
             </div>
 
+            <div className="font-mono text-xs space-y-1 text-neo-dark pt-1">
+              <p>
+                📧 <a href={`mailto:${PERSONAL.email}`} className="font-bold hover:text-neo-blue underline">{PERSONAL.email}</a>
+              </p>
+              <p>
+                📞 <a href={`tel:${PERSONAL.phone}`} className="font-bold hover:text-neo-blue underline">+91 {PERSONAL.phone}</a>
+              </p>
+            </div>
+
             <motion.button
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
