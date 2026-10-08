@@ -28,11 +28,11 @@ export const Hackathons: React.FC = () => {
               HACKATHON <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block">HONORS & TRACKS.</span>
             </>
           }
-          description="Competitive hackathons, NASA space challenges, and national buildathons where Om Ajinath Khade engineered and deployed software solutions."
+          description="Competitive hackathons, NASA space challenges, and national buildathons participated in by Om Khade."
           action={
             <div className="hidden sm:flex items-center gap-2">
               <div className="neo-glass-subtle px-3 py-1.5 shadow-brutal font-mono text-xs font-bold text-center">
-                <span className="text-neo-red font-black">7 VERIFIED COMPETITIONS</span>
+                <span className="text-neo-red font-black">{HACKATHONS.length} HACKATHONS</span>
               </div>
             </div>
           }

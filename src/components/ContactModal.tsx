@@ -105,9 +105,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             <span className="font-mono text-[10px] font-bold uppercase block text-[#121212]">
               DIRECT CONTACT DETAILS:
             </span>
-            <span className="font-grotesk font-black text-sm sm:text-base text-[#121212]">
-              omkhade09@gmail.com | +91 7588021256
-            </span>
+            <div className="font-grotesk font-black text-sm sm:text-base text-[#121212] flex flex-wrap items-center gap-2">
+              <a href="mailto:omkhade09@gmail.com" className="hover:underline">
+                omkhade09@gmail.com
+              </a>
+              <span>|</span>
+              <a href="tel:+917588021256" className="hover:underline">
+                +91 7588021256
+              </a>
+            </div>
           </div>
 
           <button

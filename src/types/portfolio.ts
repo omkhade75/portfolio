@@ -1,58 +1,52 @@
 /**
- * Om Ajinath Khade — Portfolio Type Definitions
+ * Om Khade — Portfolio Type Definitions
  * 
  * Centralized TypeScript interface definitions for featured projects,
- * hackathons, academic milestones, and certificate credentials.
+ * hackathons, and academic/leadership milestones.
  */
-
-export interface ProjectMetric {
-  label: string;
-  value: string;
-}
 
 export interface ProjectData {
   id: string;
   number: string;
   title: string;
   tagline: string;
-  category: 'AI / Voice' | 'Full-Stack' | 'Spatial WebGL';
+  category: 'Full-Stack' | 'AI Platform';
   accentColor: string;
+  badge: string;
   description: string;
+  problem: string;
+  solution: string;
   architecture: string[];
-  metrics: ProjectMetric[];
+  engineeringHighlights: string[];
   tags: string[];
   githubUrl: string;
   liveUrl?: string;
-  featured?: boolean;
+  demoCredentials?: { role: string; email: string; pass?: string }[];
+  featured: boolean;
 }
 
-export interface HackathonData {
+export interface HackathonItem {
   title: string;
   year: string;
   organizer: string;
-  category: 'INTERNATIONAL' | 'NATIONAL' | 'AI' | 'SOFTWARE ENGINEERING';
+  tier: 'RECOGNITION' | 'NATIONAL' | 'SPECIALIZED';
   award: string;
   badgeColor: string;
   description: string;
 }
 
-export interface CertificateData {
-  id: string;
+export interface SkillCategory {
   title: string;
-  issuer: string;
-  year: string;
-  category: string;
-  badgeColor: string;
-  fileUrl: string;
-  description: string;
+  skills: string[];
+  accent: string;
 }
 
-export interface TimelineMilestone {
-  year: string;
+export interface TimelineItem {
+  period: string;
   title: string;
   organization: string;
-  icon: any;
-  accent: string;
+  metric?: string;
   description: string;
   tags: string[];
+  accent: string;
 }

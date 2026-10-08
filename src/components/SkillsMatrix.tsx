@@ -95,7 +95,7 @@ export const SkillsMatrix: React.FC = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 relative">
             {CURRENTLY_LEARNING.map((item, idx) => (
               <motion.div
                 key={idx}

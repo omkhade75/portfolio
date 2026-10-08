@@ -10,15 +10,15 @@ export const ExperienceTimeline: React.FC = () => {
         
         {/* Section Header */}
         <SectionHeader
-          index="05 // EXPERIENCE & EDUCATION"
+          index="05 // EDUCATION & LEADERSHIP"
           badge="ACADEMIC & LEADERSHIP MILESTONES"
           badgeColor="bg-neo-purple text-white"
           title={
             <>
-              EXPERIENCE & <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block">EDUCATION.</span>
+              EDUCATION & <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block">LEADERSHIP.</span>
             </>
           }
-          description="Chronological engineering journey, academic milestones, and entrepreneurial leadership of Om Ajinath Khade."
+          description="Academic qualifications, entrance examination scores, and leadership trajectory of Om Khade."
         />
 
         {/* Brutalist Vertical Timeline with Animated Progress Line */}

@@ -66,10 +66,10 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
                 <p className="text-neo-dark font-medium">{EDUCATION.university}</p>
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   <span className="neo-badge bg-neo-yellow text-[10px] font-bold">
-                    Sem 1: {EDUCATION.sem1SGPA} SGPA
+                    CGPA: {EDUCATION.cgpa}
                   </span>
                   <span className="neo-badge bg-neo-paper text-[10px] font-bold">
-                    Sem 2: {EDUCATION.sem2SGPA} SGPA
+                    {EDUCATION.duration}
                   </span>
                   <span className="neo-badge bg-neo-cyan text-[10px] font-bold">
                     MHT-CET {EDUCATION.mhtCetPercentile}%ile
@@ -91,19 +91,19 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
               <ul className="space-y-1 font-body text-xs text-[#121212]">
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-neo-green shrink-0" />
-                  <span><strong>Languages:</strong> C++, Python, JavaScript, SQL</span>
+                  <span><strong>Languages:</strong> C++, JavaScript, Python, SQL</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-neo-green shrink-0" />
-                  <span><strong>Full-Stack:</strong> React 19, Node.js, Express.js, REST</span>
+                  <span><strong>Full-Stack:</strong> React.js, Node.js, Express.js, REST APIs</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-neo-green shrink-0" />
-                  <span><strong>Databases:</strong> PostgreSQL, Prisma, Supabase</span>
+                  <span><strong>Databases:</strong> PostgreSQL, MongoDB, Supabase, Prisma</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-neo-green shrink-0" />
-                  <span><strong>AI & Data:</strong> Multi-Agent, OpenAI, ElevenLabs, RAG</span>
+                  <span><strong>Auth & Security:</strong> JWT, RBAC, Row Level Security</span>
                 </li>
               </ul>
             </motion.div>
@@ -121,19 +121,19 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
               <ul className="space-y-1.5 font-body text-xs text-[#121212]">
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>E-Cell (SGU):</strong> Founding General Secretary</span>
+                  <span><strong>E-Cell (SGU):</strong> General Secretary</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>NASA Space Apps:</strong> Galactic Problem Solver</span>
+                  <span><strong>NASA Space Apps:</strong> Participant</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>Smart India Hackathon:</strong> SIH 2025 Participant</span>
+                  <span><strong>Smart India Hackathon:</strong> SIH Participant</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>Production Systems:</strong> 5 Full-Stack & AI Systems</span>
+                  <span><strong>Projects:</strong> 3 Full-Stack & AI Systems</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>

@@ -11,7 +11,7 @@ export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
-  const categories = ['All', 'AI / Multi-Agent', 'Full-Stack', 'Voice AI', 'Spatial WebGL'];
+  const categories = ['All', 'Full-Stack', 'AI Platform'];
 
   const filteredProjects = filter === 'All'
     ? PROJECTS
@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
               FEATURED <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block text-[#121212]">SYSTEMS.</span>
             </>
           }
-          description="End-to-end software systems engineered and shipped by Om Ajinath Khade — featuring autonomous multi-agent ERP, real-time restaurant POS, streaming voice AI, and 3D WebGL interfaces."
+          description="Full-stack applications and AI-powered systems built by Om Khade — featuring a decision intelligence OS, a multi-role hospital management system, and an enterprise voice agent platform."
           action={
             <div className="flex flex-wrap items-center gap-1.5 neo-glass p-1.5 shadow-brutal">
               {categories.map((cat) => (

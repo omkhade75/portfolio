@@ -1,21 +1,21 @@
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
 
 def create_resume(output_filename):
     doc = SimpleDocTemplate(
         output_filename,
         pagesize=letter,
-        rightMargin=32,
-        leftMargin=32,
-        topMargin=28,
-        bottomMargin=28,
-        title="Om Ajinath Khade - Resume",
-        author="Om Ajinath Khade",
-        subject="Om Ajinath Khade - AI & Data Science Engineer Resume"
+        rightMargin=36,
+        leftMargin=36,
+        topMargin=32,
+        bottomMargin=32,
+        title="Om Khade - Resume",
+        author="Om Khade",
+        subject="Om Khade - Full Stack Intern Resume"
     )
 
     styles = getSampleStyleSheet()
@@ -54,7 +54,7 @@ def create_resume(output_filename):
         'SectionHeading',
         parent=styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=10,
+        fontSize=9.5,
         leading=12,
         textColor=colors.HexColor('#111827'),
         alignment=TA_LEFT
@@ -90,102 +90,99 @@ def create_resume(output_filename):
     story = []
 
     # 1. Header Name & Subtitle
-    story.append(Paragraph("OM AJINATH KHADE", title_style))
+    story.append(Paragraph("OM KHADE", title_style))
     story.append(Spacer(1, 1))
-    story.append(Paragraph("AI & DATA SCIENCE ENGINEER | FULL-STACK DEVELOPER", subtitle_style))
+    story.append(Paragraph("FULL STACK INTERN", subtitle_style))
     story.append(Spacer(1, 3))
     
     # Contact Row
-    contact_info = "Email: omkhade09@gmail.com  |  Phone: +91 7588021256  |  Location: Kolhapur, Maharashtra, India (Open to Relocation / Remote)<br/>" \
-                   "GitHub: github.com/omkhade75  |  LinkedIn: linkedin.com/in/om-khade-596295372  |  Portfolio: omkhadeportfolio.onrender.com"
+    contact_info = "Kolhapur, Maharashtra  •  7588021256  •  omkhade09@gmail.com  •  GitHub: github.com/omkhade75  •  LinkedIn: linkedin.com/in/om-khade-596295372  •  Portfolio: omkhadeportfolio.onrender.com"
     story.append(Paragraph(contact_info, contact_style))
     story.append(Spacer(1, 5))
     story.append(HRFlowable(width="100%", thickness=1.2, color=colors.HexColor('#111827'), spaceAfter=5))
 
-    # 2. Education Section
-    story.append(Paragraph("EDUCATION & ACADEMIC STANDING", section_heading))
+    # 2. Professional Summary
+    story.append(Paragraph("PROFESSIONAL SUMMARY", section_heading))
     story.append(HRFlowable(width="100%", thickness=0.6, color=colors.HexColor('#D1D5DB'), spaceAfter=4))
-    
-    edu_text = "<b>B.Tech in Artificial Intelligence & Data Science</b> — Next Wave Institute of Advanced Technology (collaborated with SGU)<br/>" \
-               "• <b>Academic Metrics</b>: Semester 1: <b>9.5 SGPA</b> | Semester 2: <b>9.32 SGPA</b> (Current Sem 3: Advanced DSA in C++ & Distributed Backends)<br/>" \
-               "• <b>Competitive Entrance</b>: MHT-CET: <b>96 Percentile</b> | JEE Main: <b>91 Percentile</b> | 10th Board: <b>92%</b>"
-    story.append(Paragraph(edu_text, body_style))
+    summary_text = "B.Tech CSE (AI & Data Science) student at Sanjay Ghodawat University with hands-on experience building full-stack applications, backend APIs and AI-powered systems. Skilled in React, JavaScript, Node.js, Express.js, PostgreSQL, MongoDB, Prisma and Supabase, with practical experience in REST APIs, authentication, RBAC/RLS and AI/API integrations. Seeking a Full Stack/SDE internship to build reliable, user-focused software across frontend, backend and AI layers."
+    story.append(Paragraph(summary_text, body_style))
     story.append(Spacer(1, 5))
 
     # 3. Technical Skills
     story.append(Paragraph("TECHNICAL SKILLS", section_heading))
     story.append(HRFlowable(width="100%", thickness=0.6, color=colors.HexColor('#D1D5DB'), spaceAfter=4))
-    
-    skills_text = "• <b>Languages</b>: C++, Python, JavaScript (ES6+), TypeScript, SQL<br/>" \
-                  "• <b>Full-Stack & Backend</b>: React JS, Node.js, Express.js, RESTful APIs, JWT Authentication, Tailwind CSS<br/>" \
-                  "• <b>Databases & ORM</b>: PostgreSQL, Prisma ORM, Supabase, MongoDB, MySQL<br/>" \
-                  "• <b>AI & Emerging Systems</b>: Multi-Agent AI Systems, OpenAI API, ElevenLabs Voice, RAG Pipelines, Three.js / WebGL<br/>" \
-                  "• <b>Developer Tools</b>: Git, GitHub, Postman, Vite, VS Code, Render, Vercel, Linux / Bash"
+    skills_text = "• <b>Languages</b>: C++, JavaScript, Python, SQL<br/>" \
+                  "• <b>Frontend</b>: React.js, Vite, HTML, CSS, Tailwind CSS<br/>" \
+                  "• <b>Backend</b>: Node.js, Express.js, REST APIs, Prisma ORM<br/>" \
+                  "• <b>Databases & Auth</b>: PostgreSQL, MongoDB, Supabase, JWT, RBAC, Row Level Security<br/>" \
+                  "• <b>AI Tools & Integrations</b>: Gemini API, Vapi, ElevenLabs, AssemblyAI, Murf AI, Lovable, Antigravity<br/>" \
+                  "• <b>Developer Tools</b>: Git, GitHub, Postman, VS Code, npm, Render"
     story.append(Paragraph(skills_text, body_style))
     story.append(Spacer(1, 5))
 
-    # 4. Featured Projects
-    story.append(Paragraph("FEATURED PROJECTS & SYSTEMS", section_heading))
+    # 4. Selected Projects
+    story.append(Paragraph("SELECTED PROJECTS", section_heading))
     story.append(HRFlowable(width="100%", thickness=0.6, color=colors.HexColor('#D1D5DB'), spaceAfter=4))
 
     projects = [
         (
-            "OmniMind AI — Enterprise Multi-Agent ERP System",
-            "React, TypeScript, Node.js, Prisma ORM, PostgreSQL, Multi-Agent AI",
-            "https://omni-ai-5uz8.onrender.com",
+            "OmniMind AI — Decision Intelligence OS",
+            "React, Node.js, Prisma, PostgreSQL, Tailwind CSS",
+            "GitHub: github.com/omkhade75/omni-mind-vue  |  Live Demo: bizora-owner.onrender.com",
             [
-                "Architected a decoupled multi-agent ERP platform orchestrating autonomous executive personas (CEO, CFO, COO agents) for automated retail risk analysis.",
-                "Engineered relational PostgreSQL schema via Prisma ORM for tracking inventory ledger shifts and POS transactions, coupled with live external market data APIs."
+                "Built a modular decision-intelligence platform spanning billing/POS, inventory, CRM, suppliers, finance, operations, forecasting and AI workflows.",
+                "Designed a normalized PostgreSQL schema with 18+ interconnected models using Prisma ORM; implemented RBAC, protected routes and audit logging.",
+                "Built role-aware dashboards and business workflows for sales, inventory, CRM, finance and operations with AI-assisted decision support."
             ]
         ),
         (
-            "Saffron — Restaurant Operating System & POS",
-            "React 19, Node.js, Express.js, PostgreSQL, Prisma ORM, TanStack Query",
-            "https://restorant1-frontend.onrender.com/login",
+            "MediCare Hospital Management System",
+            "React, Vite, Tailwind CSS, Supabase, PostgreSQL",
+            "GitHub: github.com/omkhade75/hospital_man  |  Live Demo: hospital-man-fronted.onrender.com",
             [
-                "Built an end-to-end restaurant POS and Kitchen Display System (KDS) using TanStack Query server-state caching for real-time order synchronization across tablet stations.",
-                "Designed Role-Based Access Control (RBAC) across waitstaff and administrative endpoints, with dynamic UPI payment QR code generation for instant table-side billing."
+                "Built a multi-role hospital platform for patient registration, appointments, doctor/nurse workflows, wards/beds and emergency operations.",
+                "Implemented Supabase Auth, PostgreSQL Row Level Security and server-side functions; added dashboards, PDF reports and AI voice/chat integrations.",
+                "Created responsive role-based dashboards and reporting workflows for hospital administration and clinical operations."
             ]
         ),
         (
-            "Agentrix — AI Voice Agent Playground",
-            "React, TypeScript, Node.js, Supabase, OpenAI API, ElevenLabs",
-            "https://agentixxai.lovable.app",
+            "Agentrix — Enterprise Voice Agent Platform",
+            "React, Vite, Node.js, Express, Supabase, JWT",
+            "GitHub: github.com/omkhade75/ai-calling-agent",
             [
-                "Developed a conversational voice agent orchestration playground with a low-latency Node.js audio streaming buffer proxy piping TTS chunks from ElevenLabs to client visualizers.",
-                "Implemented Web Audio API AnalyserNode frequency extraction for real-time waveform visualization alongside customizable JSONB prompt profiles."
-            ]
-        ),
-        (
-            "MediCare — Cloud-Native Hospital Management OS",
-            "React 18, TypeScript, Supabase Edge Functions, PostgreSQL RLS, OpenAI API",
-            "https://hospital-man-fronted.onrender.com/",
-            [
-                "Constructed a multi-role hospital management platform utilizing Supabase Edge Functions and PostgreSQL Row Level Security (RLS) for doctor/patient data privacy.",
-                "Integrated an automated OpenAI triage assistant for intelligent initial symptom pre-screening and appointment classification."
+                "Built a full-stack platform for configuring and managing AI voice agents, including onboarding, settings, phone routing and browser testing.",
+                "Developed modular Express APIs and reusable React components with JWT authentication and voice/AI service integrations.",
+                "Integrated browser-based voice-agent testing and configurable agent settings into the platform workflow."
             ]
         )
     ]
 
     for proj_title, tech_stack, demo_url, bullets in projects:
         story.append(Paragraph(f"<b>{proj_title}</b> <font color='#4B5563'>| {tech_stack}</font>", item_title))
-        story.append(Paragraph(f"<i>Live URL: {demo_url}</i>", item_sub))
+        story.append(Paragraph(f"<i>{demo_url}</i>", item_sub))
         for b in bullets:
             story.append(Paragraph(f"• {b}", body_style))
         story.append(Spacer(1, 2.5))
 
     story.append(Spacer(1, 2))
 
-    # 5. Hackathons & Achievements
-    story.append(Paragraph("HACKATHONS & RECOGNITION", section_heading))
+    # 5. Education
+    story.append(Paragraph("EDUCATION", section_heading))
     story.append(HRFlowable(width="100%", thickness=0.6, color=colors.HexColor('#D1D5DB'), spaceAfter=4))
+    story.append(Paragraph("<b>B.Tech CSE (AI & Data Science)</b> | Sanjay Ghodawat University, Kolhapur | NIAT Upskilling Program | 2025–2029 | CGPA: 9.40", body_style))
+    story.append(Paragraph("<b>HSC (12th)</b> | Shanti Junior College | 2025 | 68%", body_style))
+    story.append(Paragraph("<b>SSC (10th)</b> | Model Public School | 2023 | 92%", body_style))
+    story.append(Spacer(1, 4))
 
+    # 6. Leadership & Achievements
+    story.append(Paragraph("LEADERSHIP & ACHIEVEMENTS", section_heading))
+    story.append(HRFlowable(width="100%", thickness=0.6, color=colors.HexColor('#D1D5DB'), spaceAfter=4))
     achievements = [
-        "• <b>NASA International Space Apps Challenge (2025)</b>: Awarded <b>Galactic Problem Solver</b> for building technology-driven space data analytics solutions.",
-        "• <b>Smart India Hackathon (SIH 2025)</b>: <b>National Participant</b> selected in India's flagship innovation competition by the Ministry of Education & AICTE.",
-        "• <b>Specialized Buildathons</b>: Competed in OpenAI Academy × NxtWave Buildathon, Murf AI Hackathon, Meta × Scaler Hackathon, and Takeover Hackathon."
+        "• General Secretary, E-Cell, Sanjay Ghodawat University - led entrepreneurship activities, event coordination and team operations.",
+        "• Hackathons: NASA Space Apps Challenge 2025 | Smart India Hackathon (SIH) | OpenAI Academy x NxtWave Buildathon 2026",
+        "• Murf AI Hackathon 2026 | Meta x Scaler School of Technology Hackathon 2026 | NIAT TakeOver Hackathon 2026",
+        "• JEE Main - 91 Percentile | MHT-CET - 95 Percentile."
     ]
-
     for ach in achievements:
         story.append(Paragraph(ach, body_style))
         story.append(Spacer(1, 1.5))
@@ -194,7 +191,5 @@ def create_resume(output_filename):
     print(f"PDF successfully generated at {output_filename}")
 
 if __name__ == "__main__":
-    out1 = r"d:\projects\portfolio light\public\Om_Khade_Resume.pdf"
-    out2 = r"d:\projects\portfolio light\public\resume.pdf"
+    out1 = os.path.join(os.path.dirname(__file__), "public", "Om_Khade_Resume.pdf")
     create_resume(out1)
-    create_resume(out2)

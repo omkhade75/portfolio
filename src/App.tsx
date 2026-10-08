@@ -1,13 +1,13 @@
 /**
- * Om Ajinath Khade — Engineering Portfolio Application Entry Point
+ * Om Khade — Portfolio Application Entry Point
  * 
  * Architecture:
- * - Framework: React 19 with Vite 8 & TypeScript 6
+ * - Framework: React 19 with Vite 8
  * - Styling: Tailwind CSS v4 (Neo-Brutalist Light / Cyber Matrix / Hyper / Mono)
  * - Motion: Framer Motion physics-based transitions & Choreography
  * - 3D Graphics: HTML5 Canvas Polyhedral Neural Projection Core (60fps)
  * 
- * @author Om Ajinath Khade (omkhade09@gmail.com)
+ * @author Om Khade (omkhade09@gmail.com)
  */
 
 import React, { useState } from 'react';
@@ -21,7 +21,6 @@ import { SystemArchitecture } from './components/SystemArchitecture';
 import { SkillsMatrix } from './components/SkillsMatrix';
 import { Hackathons } from './components/Hackathons';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { Certificates } from './components/Certificates';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { ScrollProgress } from './components/ScrollProgress';
@@ -57,29 +56,26 @@ export function App() {
           {/* 02. Executive Recruiter Snapshot */}
           <RecruiterBrief onOpenContact={handleOpenContact} />
 
-          {/* 03. Flagship Production Systems & Projects */}
+          {/* 03. Featured Production Systems & Projects */}
           <Projects />
 
           {/* 04. System Architecture Lab */}
           <SystemArchitecture />
 
-          {/* 05. Technical Highlights & Skills Matrix */}
+          {/* 05. Technical Skills Matrix */}
           <SkillsMatrix />
 
-          {/* 06. Competitions & Global Hackathons */}
+          {/* 06. Competitions & Hackathons */}
           <Hackathons />
 
-          {/* 07. Academic Timeline & Learning Journey */}
+          {/* 07. Education & Experience Timeline */}
           <ExperienceTimeline />
-
-          {/* 08. Verified Credentials & Certifications */}
-          <Certificates />
         </main>
 
-        {/* 09. Dark Footer with CTA & Live Clock */}
+        {/* Footer with CTA & Live Clock */}
         <Footer onOpenContact={handleOpenContact} />
 
-        {/* Interactive Contact & Interview Scheduling Modal */}
+        {/* Interactive Contact Modal */}
         <ContactModal isOpen={isContactOpen} onClose={handleCloseContact} />
       </div>
     </ThemeProvider>

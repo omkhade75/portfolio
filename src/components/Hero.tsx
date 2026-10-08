@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               <div className="flex items-center justify-between border-b-2 border-[#121212] pb-1.5 sm:pb-2 mb-2 font-mono text-[9px] sm:text-[11px] font-bold">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-neo-green animate-pulse" />
-                  <span className="text-[#121212] uppercase tracking-wider truncate">ENGINEER ID • {PERSONAL.name}</span>
+                  <span className="text-[#121212] uppercase tracking-wider truncate">DEVELOPER ID • {PERSONAL.name}</span>
                 </div>
                 <span className="neo-badge bg-neo-yellow text-[#121212] text-[8px] sm:text-[9px] px-1.5 py-0.5">
                   VERIFIED
@@ -88,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   </h2>
 
                   <p className="font-grotesk font-bold text-[11px] sm:text-sm text-neo-blue leading-tight truncate">
-                    {EDUCATION.degree}
+                    {PERSONAL.title}
                   </p>
 
                   <p className="font-mono text-[9px] sm:text-[11px] text-neo-dark font-medium truncate">
@@ -98,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   {/* Highlights Pills */}
                   <div className="flex flex-wrap gap-1 pt-0.5">
                     <span className="neo-badge bg-neo-yellow text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5 text-[#121212]">
-                      {EDUCATION.sem1SGPA} SGPA
+                      CGPA {EDUCATION.cgpa}
                     </span>
                     <span className="neo-badge bg-neo-purple text-white text-[8px] sm:text-[9px] font-bold px-1.5 py-0.5">
                       GEN SEC • E-CELL
@@ -128,36 +128,36 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     Hello, I am
                   </p>
                   <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-[#171717] leading-[1.05]">
-                    Om Ajinath Khade
+                    {PERSONAL.name}
                   </h1>
                   <p className="font-sans text-xs sm:text-base text-neutral-600 font-medium tracking-wide">
-                    AI & Full-Stack Engineer • Multi-Agent ERP Architect • <span className="font-semibold text-black">9.5 SGPA</span>
+                    Full Stack Intern • AI & Data Science Student • <span className="font-semibold text-black">CGPA {EDUCATION.cgpa}</span>
                   </p>
                 </div>
               ) : (
                 /* Classic Neo-Brutalist Headline for Solar, Cyber & Hyper */
                 <h1 className="font-grotesk font-black text-2xl sm:text-4xl lg:text-5xl xl:text-[3.8rem] leading-[1.05] sm:leading-[1.02] tracking-tight text-[#121212]">
-                  AI & DATA SCIENCE{' '}
+                  FULL STACK{' '}
                   <motion.span
                     whileHover={{ scale: 1.03, rotate: 1 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                     className="bg-neo-yellow text-[#121212] px-1.5 sm:px-3 py-0.5 border-2 sm:border-3 border-[#121212] shadow-brutal inline-block my-1 transform -rotate-1 cursor-default"
                   >
-                    ENGINEER
+                    DEVELOPER
                   </motion.span>{' '}
-                  — CRAFTING AGENTIC AI & FULL-STACK SYSTEMS.
+                  & AI / DATA SCIENCE STUDENT.
                 </h1>
               )}
             </motion.div>
 
-            {/* Positioning Statement */}
+            {/* Positioning Statement / About Section */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className={`font-body text-xs sm:text-base text-neo-dark font-medium leading-relaxed max-w-2xl neo-glass p-3.5 sm:p-5 shadow-brutal ${isMono ? 'rounded-2xl border-neutral-200 shadow-sm' : ''}`}
             >
-              Hi, I'm <strong className="font-bold underline decoration-neo-yellow decoration-4">Om Ajinath Khade</strong> — an ambitious engineering student specializing in Artificial Intelligence & Data Science at Next Wave Institute of Advanced Technology (collaborated with Sanjay Ghodawat University). Maintaining a <strong className="bg-neo-yellow text-[#121212] px-1 font-bold border border-black">{EDUCATION.sem1SGPA} SGPA</strong> while building enterprise multi-agent ERP platforms, AI voice streaming agents, and high-performance full-stack applications.
+              B.Tech CSE (AI & Data Science) student at <strong className="font-bold underline decoration-neo-yellow decoration-4">Sanjay Ghodawat University</strong> (NIAT Upskilling Program) with hands-on experience building full-stack applications, backend APIs, and AI-powered systems. Skilled in React, JavaScript, Node.js, Express.js, PostgreSQL, MongoDB, Prisma, and Supabase, with practical experience in REST APIs, authentication, RBAC/RLS, and AI/API integrations. Seeking a Full Stack / SDE internship to build reliable, user-focused software.
             </motion.p>
 
             {/* Action CTAs */}
@@ -213,28 +213,28 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             >
               <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform">
                 <span className="font-grotesk font-black text-lg sm:text-xl text-[#121212] block leading-none">
-                  9.5 <span className="text-xs font-mono font-bold text-neo-blue">SGPA</span>
+                  {EDUCATION.cgpa} <span className="text-xs font-mono font-bold text-neo-blue">CGPA</span>
                 </span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider">
-                  Academic Rank
+                  B.Tech (2025–2029)
                 </span>
               </div>
 
               <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform">
                 <span className="font-grotesk font-black text-lg sm:text-xl text-[#121212] block leading-none">
-                  5 <span className="text-xs font-mono font-bold text-neo-green">DEPLOYED</span>
+                  3 <span className="text-xs font-mono font-bold text-neo-green">PROJECTS</span>
                 </span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider">
-                  Production Systems
+                  Full-Stack & AI
                 </span>
               </div>
 
               <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform">
                 <span className="font-grotesk font-black text-lg sm:text-xl text-[#121212] block leading-none">
-                  7 <span className="text-xs font-mono font-bold text-neo-red">HONORS</span>
+                  6 <span className="text-xs font-mono font-bold text-neo-red">TRACKS</span>
                 </span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider">
-                  Hackathons & Space Apps
+                  Hackathons
                 </span>
               </div>
 
@@ -312,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                   <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-neo-yellow border border-[#121212]" />
                   <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-neo-green border border-[#121212]" />
                   <span className="ml-1.5 font-bold text-[9px] sm:text-[11px] truncate uppercase text-[#121212]">
-                    {viewMode === 'photo' ? 'ENGINEER_PORTRAIT.JPG' : 'NEURAL_3D_CORE.OBJ'}
+                    {viewMode === 'photo' ? 'DEVELOPER_PORTRAIT.JPG' : 'NEURAL_3D_CORE.OBJ'}
                   </span>
                 </div>
 
@@ -379,7 +379,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                       <div className="absolute bottom-3 inset-x-3 bg-white/95 backdrop-blur-sm border-2 border-[#121212] p-2 shadow-brutal font-mono text-[9px] sm:text-[11px] font-bold text-[#121212] flex justify-between items-center">
                         <span className="truncate">{EDUCATION.universityShort}</span>
                         <span className="neo-badge bg-neo-yellow text-[#121212] text-[8px] sm:text-[9px] px-1.5 py-0.5 shrink-0 border border-black">
-                          {EDUCATION.sem1SGPA} SGPA
+                          CGPA {EDUCATION.cgpa}
                         </span>
                       </div>
                     </div>

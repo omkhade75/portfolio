@@ -9,150 +9,55 @@ export const SystemArchitecture: React.FC = () => {
 
   const systems = [
     {
-      id: 'bizora',
-      systemName: 'Bizora AI Autonomous Retail ERP',
-      role: '5-Portal Micro-Frontend & Autonomous AI Fleet',
-      badge: 'AUTONOMOUS SELF-HEALING ERP',
+      id: 'omnimind',
+      systemName: 'OmniMind AI — Decision Intelligence OS',
+      role: 'Modular Decision-Intelligence Platform',
+      badge: 'FLAGSHIP SYSTEM',
       accent: 'bg-neo-yellow text-[#121212]',
-      problem: 'Retail store supply chains and cloud POS systems suffer from cold-start downtime, disconnected inventory silos, and manual order bookkeeping.',
-      solution: 'Consolidated 5 synchronized portals (Owner, Admin, Supplier, Customer, Web) with a centralized NestJS REST engine, dual databases (Postgres + Mongo), and a 45s AI self-healing daemon.',
+      problem: 'Business operations suffer from fragmented tools for billing, inventory, supplier management, and financial reporting.',
+      solution: 'Built a modular decision-intelligence platform with normalized PostgreSQL schema (18+ models), RBAC, protected routes, audit logging, and AI-assisted decision support.',
       layers: [
-        {
-          name: '5 MICRO-PORTALS',
-          tech: 'React 19 + TanStack Start + Nitro',
-          icon: Globe,
-          detail: 'Dedicated portals for Store Owners, Super Admins, Suppliers, Customers, and Public Web with 3x retry shields.'
-        },
-        {
-          name: 'AUTONOMOUS AI DAEMON',
-          tech: 'NestJS AI Self-Healing Fleet',
-          icon: Cpu,
-          detail: '45-second automated sweep running 8 playbooks: pool keepalive, V8 memory garbage sweep, and stock auto-reconciliation.'
-        },
-        {
-          name: 'POLYGLOT DUAL-DB',
-          tech: 'PostgreSQL 17 (Prisma) + MongoDB Atlas',
-          icon: Database,
-          detail: 'ACID double-entry financial accounting in PostgreSQL paired with dynamic, high-throughput catalog search in MongoDB.'
-        },
-        {
-          name: 'VOICE AI & MESSAGING',
-          tech: 'Vapi AI Telephony + WhatsApp API',
-          icon: Server,
-          detail: 'Autonomous multilingual AI voice calls (Hindi/English) for supplier restocking and automated WhatsApp invoice dispatch.'
-        }
+        { name: 'ROLE DASHBOARDS', tech: 'React + Tailwind CSS', icon: Globe, detail: 'Role-aware dashboards for sales, inventory, CRM, finance, and operations workflows.' },
+        { name: 'API & AUTH', tech: 'Node.js + RBAC + Audit Logging', icon: Server, detail: 'Protected routes with role-based access control and comprehensive audit logging.' },
+        { name: 'DATABASE', tech: 'PostgreSQL + Prisma ORM', icon: Database, detail: 'Normalized PostgreSQL schema with 18+ interconnected models via Prisma ORM.' },
+        { name: 'AI WORKFLOWS', tech: 'AI-Assisted Decision Support', icon: Cpu, detail: 'AI workflows for forecasting, billing optimization, and operational decision support.' }
       ],
-      impact: 'Achieved 99.9% production uptime with zero-crash resilience, sub-second POS barcode checkout, and autonomous voice replenishment.'
-    },
-    {
-      id: 'saffron',
-      systemName: 'Saffron Restaurant POS & KDS',
-      role: 'Full-Stack Server-State Caching',
-      badge: 'REACT 19 & TANSTACK QUERY',
-      accent: 'bg-neo-red text-white',
-      problem: 'Fragmented restaurant software causes delays between table waitstaff, kitchen display systems (KDS), and billing counters.',
-      solution: 'Unified full-stack architecture using TanStack Query server-state caching to synchronize table orders across kitchen tablets without global state clutter.',
-      layers: [
-        {
-          name: 'WAITER / QR APP',
-          tech: 'React 19 & TanStack Router Client',
-          icon: Globe,
-          detail: 'Optimistic UI order entry and dynamic UPI QR code generator for direct table settlements.'
-        },
-        {
-          name: 'API GATEWAY',
-          tech: 'Express.js & JWT Auth Middleware',
-          icon: Server,
-          detail: 'Role-based access control protecting waitstaff, kitchen, and administrative endpoints.'
-        },
-        {
-          name: 'ORM & DATABASE',
-          tech: 'PostgreSQL Relational Schema (Prisma)',
-          icon: Database,
-          detail: 'Relational mapping connecting orders, menu items, table sessions, and payment logs.'
-        },
-        {
-          name: 'KITCHEN DISPLAY',
-          tech: 'Real-Time KDS Order Sync',
-          icon: Terminal,
-          detail: 'Server-state polling and instant order queue status updates across kitchen tablets.'
-        }
-      ],
-      impact: 'Synchronizes table orders in real-time with kitchen displays and streamlines dynamic UPI QR settlements.'
-    },
-    {
-      id: 'agentrix',
-      systemName: 'Agentrix AI Voice Platform',
-      role: 'Audio Stream Buffer Proxy',
-      badge: 'ELEVENLABS + OPENAI STREAMING',
-      accent: 'bg-neo-cyan text-[#121212]',
-      problem: 'AI voice assistants suffer from high latency when piping text-to-speech audio buffers through standard sequential HTTP requests.',
-      solution: 'Node.js streaming proxy with Web Audio API frequency analysis, piping audio buffers directly from ElevenLabs to frontend canvas visualizers.',
-      layers: [
-        {
-          name: 'VOICE PLAYGROUND',
-          tech: 'React & Web Audio API AnalyserNode',
-          icon: Globe,
-          detail: 'Visualizes real-time frequency spectrum waves while receiving chunked audio stream chunks.'
-        },
-        {
-          name: 'STREAMING PROXY',
-          tech: 'Node.js Audio Buffer Pipe',
-          icon: Server,
-          detail: 'Pipes binary audio buffer chunks directly to the client to minimize time-to-first-sound.'
-        },
-        {
-          name: 'LLM & TTS ENGINES',
-          tech: 'OpenAI API & ElevenLabs Voice',
-          icon: Cpu,
-          detail: 'Generates conversational replies and synthesizes expressive human-like audio voices.'
-        },
-        {
-          name: 'PERSISTENCE',
-          tech: 'Supabase PostgreSQL JSONB Prompts',
-          icon: Database,
-          detail: 'Stores system prompt templates, voice agent configurations, and session transcripts.'
-        }
-      ],
-      impact: 'Streams audio buffer chunks directly to Web Audio API visualizers with low-latency LLM responses.'
+      impact: 'Unified platform covering billing/POS, inventory, CRM, suppliers, finance, operations, and AI-driven forecasting.'
     },
     {
       id: 'medicare',
-      systemName: 'MediCare Healthcare Platform',
-      role: 'Serverless BaaS & Security Matrix',
-      badge: 'SUPABASE EDGE FUNCTIONS & RLS',
+      systemName: 'MediCare Hospital Management System',
+      role: 'Multi-Role Healthcare Platform',
+      badge: 'HEALTHCARE SYSTEM',
       accent: 'bg-neo-purple text-white',
-      problem: 'Legacy hospital software is slow and vulnerable to unauthorized access across medical and administrative roles.',
-      solution: 'Cloud-native Supabase architecture with strict PostgreSQL Row Level Security (RLS) policies and Edge Functions for AI patient pre-screening.',
+      problem: 'Hospital workflows face inefficiencies in patient registration, appointment scheduling, and role-segregated medical records access.',
+      solution: 'Built a multi-role hospital platform with Supabase Auth, PostgreSQL Row Level Security, server-side functions, and AI integrations.',
       layers: [
-        {
-          name: 'HOSPITAL DASHBOARD',
-          tech: 'React 18 & Zustand State',
-          icon: Globe,
-          detail: 'Role-segregated portals for doctors, patients, and hospital administrators.'
-        },
-        {
-          name: 'SERVERLESS COMPUTE',
-          tech: 'Supabase Deno Edge Functions',
-          icon: Server,
-          detail: 'Executes rapid serverless actions for appointment scheduling and pre-screening workflows.'
-        },
-        {
-          name: 'DATA PRIVACY',
-          tech: 'PostgreSQL Row Level Security (RLS)',
-          icon: Database,
-          detail: 'Enforces strict cryptographic tenant isolation and patient medical record privacy.'
-        },
-        {
-          name: 'AI TRIAGE BOT',
-          tech: 'Contextual OpenAI Medical Prompts',
-          icon: Cpu,
-          detail: 'Pre-screens patient symptoms and classifies triage urgency before doctor consultations.'
-        }
+        { name: 'HOSPITAL DASHBOARD', tech: 'React + Vite + Tailwind CSS', icon: Globe, detail: 'Responsive role-based dashboards for doctors, nurses, patients, and administrators.' },
+        { name: 'AUTH & SECURITY', tech: 'Supabase Auth + PostgreSQL RLS', icon: Server, detail: 'Supabase Auth with PostgreSQL Row Level Security for strict data confidentiality.' },
+        { name: 'SERVER FUNCTIONS', tech: 'Supabase Server-Side Functions', icon: Database, detail: 'Server-side functions for appointment bookings, ward management, and reporting.' },
+        { name: 'AI INTEGRATIONS', tech: 'AI Voice & Chat + PDF Reports', icon: Cpu, detail: 'AI voice/chat integrations and automated PDF report generation.' }
       ],
-      impact: 'Ensures strict doctor/patient data isolation and role-based access with automated serverless scaling.'
+      impact: 'Comprehensive hospital management with secure multi-role access and AI-powered workflows.'
+    },
+    {
+      id: 'agentrix',
+      systemName: 'Agentrix — Voice Agent Platform',
+      role: 'AI Voice Agent Management',
+      badge: 'VOICE AI PLATFORM',
+      accent: 'bg-neo-cyan text-[#121212]',
+      problem: 'Businesses need a streamlined way to configure, test, and deploy AI voice agents.',
+      solution: 'Built modular Express APIs with reusable React components, JWT authentication, and browser-based voice-agent testing.',
+      layers: [
+        { name: 'VOICE UI', tech: 'React + Reusable Components', icon: Globe, detail: 'Modular React interface for agent onboarding, settings, phone routing, and testing.' },
+        { name: 'API LAYER', tech: 'Node.js + Express + JWT', icon: Server, detail: 'Modular Express APIs with JWT authentication for secure agent management.' },
+        { name: 'DATA STORE', tech: 'Supabase', icon: Database, detail: 'Supabase backend storing agent configurations and session data.' },
+        { name: 'VOICE SERVICES', tech: 'AI Voice Integrations', icon: Cpu, detail: 'Voice/AI service integrations for browser-based agent testing.' }
+      ],
+      impact: 'End-to-end platform for configuring, testing, and managing enterprise AI voice agents.'
     }
   ];
+
 
   const currentSystem = systems[selectedSystemIndex];
   const currentLayer = currentSystem.layers[selectedStepIndex];
@@ -172,7 +77,7 @@ export const SystemArchitecture: React.FC = () => {
               SYSTEM ARCHITECTURE <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block">LAB.</span>
             </>
           }
-          description="Interactive system topology explorer — select an architecture to trace decoupled data flows across frontend micro-portals, REST APIs, databases, and autonomous AI pipelines."
+          description="Interactive system architecture explorer — trace data flows across frontend clients, REST APIs, databases, and AI workflows."
         />
 
         {/* System Topology Console Box */}

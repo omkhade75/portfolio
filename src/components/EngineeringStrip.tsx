@@ -3,21 +3,21 @@ import { motion } from 'framer-motion';
 
 export const EngineeringStrip: React.FC = () => {
   const techStack = [
-    { name: 'C++', category: 'CORE DSA', accent: 'bg-neo-yellow text-[#121212]' },
-    { name: 'PYTHON', category: 'AI / ML', accent: 'bg-neo-cyan text-[#121212]' },
-    { name: 'TYPESCRIPT', category: 'TYPED FULL-STACK', accent: 'bg-white text-[#121212]' },
-    { name: 'REACT 19', category: 'UI / CLIENT', accent: 'bg-neo-yellow text-[#121212]' },
-    { name: 'NODE.JS', category: 'RUNTIME', accent: 'bg-neo-green text-[#121212]' },
-    { name: 'NESTJS', category: 'ENTERPRISE REST', accent: 'bg-neo-red text-white' },
+    { name: 'C++', category: 'LANGUAGES', accent: 'bg-neo-yellow text-[#121212]' },
+    { name: 'JAVASCRIPT', category: 'LANGUAGES', accent: 'bg-neo-cyan text-[#121212]' },
+    { name: 'PYTHON', category: 'LANGUAGES', accent: 'bg-white text-[#121212]' },
+    { name: 'REACT.JS', category: 'FRONTEND', accent: 'bg-neo-yellow text-[#121212]' },
+    { name: 'NODE.JS', category: 'BACKEND', accent: 'bg-neo-green text-[#121212]' },
+    { name: 'EXPRESS.JS', category: 'BACKEND', accent: 'bg-neo-red text-white' },
     { name: 'POSTGRESQL', category: 'DATABASE', accent: 'bg-neo-blue text-white' },
     { name: 'PRISMA ORM', category: 'DATA ACCESS', accent: 'bg-white text-[#121212]' },
-    { name: 'MULTI-AGENT AI', category: 'AUTONOMOUS FLEET', accent: 'bg-neo-red text-white' },
-    { name: 'VAPI AI VOICE', category: 'VOICE AGENTS', accent: 'bg-neo-cyan text-[#121212]' },
-    { name: 'E-CELL SGU', category: 'GENERAL SECRETARY', accent: 'bg-neo-yellow text-[#121212]' },
-    { name: 'NASA SPACE APPS', category: 'GLOBAL HONORS', accent: 'bg-neo-purple text-white' },
-    { name: 'MONGODB ATLAS', category: 'NOSQL CATALOG', accent: 'bg-neo-green text-[#121212]' },
+    { name: 'MONGODB', category: 'DATABASE', accent: 'bg-neo-green text-[#121212]' },
+    { name: 'SUPABASE', category: 'BACKEND', accent: 'bg-neo-cyan text-[#121212]' },
+    { name: 'TAILWIND CSS', category: 'FRONTEND', accent: 'bg-neo-paper text-[#121212]' },
+    { name: 'VITE', category: 'BUILD TOOL', accent: 'bg-neo-purple text-white' },
     { name: 'GIT & GITHUB', category: 'VERSIONING', accent: 'bg-white text-[#121212]' },
-    { name: 'TAILWIND CSS', category: 'DESIGN TOKENS', accent: 'bg-neo-paper text-[#121212]' },
+    { name: 'E-CELL SGU', category: 'GENERAL SECRETARY', accent: 'bg-neo-yellow text-[#121212]' },
+    { name: 'NASA SPACE APPS', category: 'HACKATHON', accent: 'bg-neo-purple text-white' },
   ];
 
   // Tripled array for seamless infinite looping

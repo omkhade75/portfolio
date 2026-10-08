@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             </div>
 
             <p className="font-body text-xs sm:text-sm text-neo-dark max-w-md leading-relaxed font-medium">
-              {EDUCATION.degree} @ {EDUCATION.universityShort}. Building agentic AI platforms, real-time backend systems, and responsive full-stack applications.
+              {EDUCATION.degree} @ {EDUCATION.universityShort}. Building full-stack applications, backend APIs, and AI-powered systems.
             </p>
 
             <div className="inline-flex items-center gap-2 font-mono text-xs font-bold bg-neo-yellow text-[#121212] px-3 py-1.5 border-2 border-[#121212] shadow-brutal-sm">
@@ -135,13 +135,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               → Technical Stack
             </a>
             <a href="#hackathons" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
-              → Hackathons & Honors
+              → Hackathons
             </a>
             <a href="#experience" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
-              → Experience & Education
-            </a>
-            <a href="#certificates" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
-              → Verified Credentials
+              → Education & Leadership
             </a>
           </div>
 

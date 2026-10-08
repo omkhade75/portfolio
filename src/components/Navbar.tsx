@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      const sections = ['hero', 'projects', 'ai-sandbox', 'skills', 'hackathons', 'experience', 'certificates'];
+      const sections = ['hero', 'projects', 'ai-sandbox', 'skills', 'hackathons', 'experience'];
       const current = sections.find((sec) => {
         const el = document.getElementById(sec);
         if (el) {
@@ -52,8 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     { id: 'ai-sandbox', label: 'Architecture', icon: Cpu, color: 'bg-neo-cyan text-[#121212]' },
     { id: 'skills', label: 'Skills', icon: Code, color: 'bg-neo-green text-[#121212]' },
     { id: 'hackathons', label: 'Hackathons', icon: Trophy, color: 'bg-neo-red text-white' },
-    { id: 'experience', label: 'Timeline', icon: User, color: 'bg-white text-[#121212]' },
-    { id: 'certificates', label: 'Credentials', icon: Award, color: 'bg-neo-purple text-white' },
+    { id: 'experience', label: 'Education', icon: User, color: 'bg-white text-[#121212]' },
   ];
 
   const scrollTo = (id: string) => {
@@ -103,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 {PERSONAL.nameShort}
               </span>
               <span className="hidden sm:inline font-mono text-[7px] sm:text-[9px] font-bold tracking-wider text-neo-subtle uppercase truncate">
-                AI & FULL-STACK ENGINEER
+                FULL STACK DEVELOPER
               </span>
             </div>
           </a>
