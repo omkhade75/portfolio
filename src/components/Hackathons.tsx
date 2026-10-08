@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Award, Code2, Globe } from 'lucide-react';
+import { Trophy, Award, Code2, Globe, ExternalLink, FileCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from './Motion';
 import { HACKATHONS, type HackathonItem } from '../data/portfolio';
@@ -75,9 +75,26 @@ export const Hackathons: React.FC = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="font-body text-xs sm:text-sm text-neo-dark font-medium leading-relaxed mb-4">
+                  <p className="font-body text-xs sm:text-sm text-neo-dark font-medium leading-relaxed mb-3">
                     {h.description}
                   </p>
+
+                  {/* Verified Certificate Link */}
+                  {h.certificateUrl && (
+                    <div className="mb-4">
+                      <a
+                        href={h.certificateUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] font-bold bg-white dark:bg-[#1a1a24] border-2 border-[#121212] px-2.5 py-1 shadow-brutal-sm text-[#121212] dark:text-white hover:bg-neo-yellow hover:text-[#121212] transition-colors"
+                        title={`View official certificate for ${h.title}`}
+                      >
+                        <FileCheck className="w-3.5 h-3.5 text-neo-green shrink-0" />
+                        <span>VIEW CERTIFICATE</span>
+                        <ExternalLink className="w-3 h-3 ml-0.5 shrink-0" />
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Stamped Award Badge Footer */}

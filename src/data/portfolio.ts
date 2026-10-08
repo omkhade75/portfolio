@@ -153,6 +153,7 @@ export interface HackathonItem {
   award: string;
   badgeColor: string;
   description: string;
+  certificateUrl?: string;
 }
 
 export const HACKATHONS: HackathonItem[] = [
@@ -161,18 +162,20 @@ export const HACKATHONS: HackathonItem[] = [
     year: '2025',
     organizer: 'NASA',
     tier: 'RECOGNITION',
-    award: 'Participant',
+    award: 'Galactic Problem Solver',
     badgeColor: 'bg-neo-yellow text-[#121212]',
-    description: 'Collaborated on technology-driven data solutions addressing Earth and space challenges in NASA\'s global innovation competition.'
+    description: 'Awarded Galactic Problem Solver for technology-driven data solutions addressing Earth and space challenges in NASA\'s global innovation competition.',
+    certificateUrl: '/certificates/nasa_space_apps_2025.jpg'
   },
   {
     title: 'Smart India Hackathon (SIH)',
     year: '2025',
     organizer: 'Ministry of Education & AICTE',
     tier: 'NATIONAL',
-    award: 'Participant',
+    award: 'National Participant',
     badgeColor: 'bg-neo-red text-white',
-    description: 'Competed in India\'s premier national innovation competition, engineering practical software solutions for societal challenges.'
+    description: 'Competed in India\'s premier national innovation competition, engineering practical software solutions for societal challenges.',
+    certificateUrl: '/certificates/smart_india_hackathon_2025.pdf'
   },
   {
     title: 'OpenAI Academy × NxtWave Buildathon',
@@ -181,7 +184,8 @@ export const HACKATHONS: HackathonItem[] = [
     tier: 'SPECIALIZED',
     award: 'Grand Finale Finalist',
     badgeColor: 'bg-neo-cyan text-[#121212]',
-    description: 'Qualified for the Grand Finale; built AI-powered solutions exploring Generative AI orchestration, LLM API integrations, and prompt engineering patterns.'
+    description: 'Competed as a Finalist in the Grand Finale of India\'s Biggest GenAI Buildathon, building AI-powered solutions exploring LLM API integrations and prompt engineering.',
+    certificateUrl: '/certificates/openai_academy_buildathon_2026.jpg'
   },
   {
     title: 'Murf AI Hackathon',
@@ -208,7 +212,8 @@ export const HACKATHONS: HackathonItem[] = [
     tier: 'SPECIALIZED',
     award: 'Grand Finale Finalist',
     badgeColor: 'bg-[#121212] text-white',
-    description: 'Qualified for the Grand Finale; built and presented end-to-end software prototypes demonstrating algorithmic problem solving and rapid execution.'
+    description: 'Successfully participated in the Takeover Hackathon, building under pressure and presenting end-to-end software prototypes.',
+    certificateUrl: '/certificates/takeover_hackathon_2026.jpg'
   }
 ];
 

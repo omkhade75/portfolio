@@ -33,6 +33,7 @@ export interface HackathonItem {
   award: string;
   badgeColor: string;
   description: string;
+  certificateUrl?: string;
 }
 
 export interface SkillCategory {
