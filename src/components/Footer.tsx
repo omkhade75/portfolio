@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <footer className="bg-[#121212] text-white border-t-4 border-[#121212] pt-8 sm:pt-14 pb-24 sm:pb-12 relative overflow-hidden">
+    <footer id="contact" className="bg-[#121212] text-white border-t-4 border-[#121212] pt-8 sm:pt-14 pb-24 sm:pb-12 relative overflow-hidden">
       
       <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-8 lg:px-12 relative z-10">
         
@@ -125,6 +125,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <span className="font-grotesk font-black text-xs sm:text-sm text-[#121212] uppercase block mb-2.5 border-b-2 border-[#121212] pb-1">
               NAVIGATION
             </span>
+            <a href="#about" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
+              → About Me
+            </a>
             <a href="#projects" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
               → Featured Systems
             </a>
@@ -137,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <a href="#hackathons" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
               → Hackathons
             </a>
-            <a href="#experience" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
+            <a href="#education" className="block text-neo-dark hover:text-neo-blue font-bold transition-colors">
               → Education & Leadership
             </a>
           </div>

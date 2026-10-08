@@ -8,7 +8,7 @@ import {
   Download,
   FileText,
   Trophy,
-  Award,
+  GraduationCap,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PERSONAL } from '../data/portfolio';
@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      const sections = ['hero', 'projects', 'ai-sandbox', 'skills', 'hackathons', 'experience'];
+      const sections = ['hero', 'about', 'projects', 'ai-sandbox', 'skills', 'hackathons', 'education'];
       const current = sections.find((sec) => {
         const el = document.getElementById(sec);
         if (el) {
@@ -48,11 +48,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   }, []);
 
   const navItems = [
+    { id: 'about', label: 'About', icon: User, color: 'bg-white text-[#121212]' },
     { id: 'projects', label: 'Projects', icon: FolderGit2, color: 'bg-neo-yellow text-[#121212]' },
     { id: 'ai-sandbox', label: 'Architecture', icon: Cpu, color: 'bg-neo-cyan text-[#121212]' },
     { id: 'skills', label: 'Skills', icon: Code, color: 'bg-neo-green text-[#121212]' },
     { id: 'hackathons', label: 'Hackathons', icon: Trophy, color: 'bg-neo-red text-white' },
-    { id: 'experience', label: 'Education', icon: User, color: 'bg-white text-[#121212]' },
+    { id: 'education', label: 'Education', icon: GraduationCap, color: 'bg-neo-purple text-white' },
   ];
 
   const scrollTo = (id: string) => {

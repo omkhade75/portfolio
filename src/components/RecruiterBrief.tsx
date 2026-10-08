@@ -11,7 +11,7 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
   const [copiedEmail, setCopiedEmail] = React.useState(false);
 
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-neo-yellow/10 border-b-3 border-[#121212]">
+    <section id="about" className="py-8 sm:py-12 lg:py-16 bg-neo-yellow/10 border-b-3 border-[#121212]">
       <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-8 lg:px-12">
         
         <motion.div
@@ -23,14 +23,14 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
         >
           
           {/* Header Tag */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b-3 border-[#121212] pb-4 mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b-3 border-[#121212] pb-4 mb-5">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-neo-yellow border-3 border-[#121212] shadow-brutal-sm flex items-center justify-center font-bold">
                 <Briefcase className="w-5 h-5 text-[#121212]" />
               </div>
               <div>
                 <span className="neo-badge bg-neo-red text-white text-[10px] font-mono font-bold">
-                  EXECUTIVE SUMMARY
+                  ABOUT ME // EXECUTIVE SUMMARY
                 </span>
                 <h3 className="font-grotesk font-black text-xl sm:text-2xl lg:text-3xl text-[#121212]">
                   RECRUITER SNAPSHOT — {PERSONAL.name}
@@ -44,6 +44,16 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
                 {AVAILABILITY.status}
               </span>
             </div>
+          </div>
+
+          {/* About Me Narrative Block */}
+          <div className="bg-[#FAF7F2] border-2 border-[#121212] p-4 sm:p-5 shadow-brutal-sm mb-6">
+            <span className="neo-badge bg-neo-yellow text-[#121212] text-[10px] font-mono font-bold mb-2">
+              PROFILE SUMMARY
+            </span>
+            <p className="font-body text-xs sm:text-sm text-[#121212] leading-relaxed font-medium">
+              B.Tech CSE (AI &amp; Data Science) student at <strong>Sanjay Ghodawat University</strong> (NIAT Upskilling Program) with hands-on experience building full-stack applications, backend APIs, and database-driven systems. Skilled in <strong>React, JavaScript, Node.js, Express.js, PostgreSQL, MongoDB, Prisma, and Supabase</strong>, with practical experience in REST APIs, authentication, RBAC/Row Level Security, and AI integrations. Actively seeking a <strong>Full Stack / SDE internship</strong> to build reliable, user-focused software.
+            </p>
           </div>
 
           {/* Key Recruiter Highlights Grid (Staggered Children) */}

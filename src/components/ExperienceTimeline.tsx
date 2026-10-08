@@ -5,7 +5,7 @@ import { TIMELINE } from '../data/portfolio';
 
 export const ExperienceTimeline: React.FC = () => {
   return (
-    <section id="experience" className="py-10 sm:py-16 lg:py-24 border-b-3 border-[#121212] bg-[#FAF7F2]">
+    <section id="education" className="py-10 sm:py-16 lg:py-24 border-b-3 border-[#121212] bg-[#FAF7F2]">
       <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-8 lg:px-12">
         
         {/* Section Header */}
