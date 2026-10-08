@@ -131,21 +131,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
                     {PERSONAL.name}
                   </h1>
                   <p className="font-sans text-xs sm:text-base text-neutral-600 font-medium tracking-wide">
-                    Full Stack Developer • AI &amp; Full-Stack Systems • <span className="font-semibold text-black">CGPA {EDUCATION.cgpa}</span>
+                    Full Stack Developer • AI &amp; Data Science Student • <span className="font-semibold text-black">CGPA {EDUCATION.cgpa}</span>
                   </p>
                 </div>
               ) : (
                 /* Classic Neo-Brutalist Headline for Solar, Cyber & Hyper */
                 <h1 className="font-grotesk font-black text-2xl sm:text-4xl lg:text-5xl xl:text-[3.8rem] leading-[1.05] sm:leading-[1.02] tracking-tight text-[#121212]">
-                  FULL STACK{' '}
+                  AI / DATA SCIENCE{' '}
                   <motion.span
                     whileHover={{ scale: 1.03, rotate: 1 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                     className="bg-neo-yellow text-[#121212] px-1.5 sm:px-3 py-0.5 border-2 sm:border-3 border-[#121212] shadow-brutal inline-block my-1 transform -rotate-1 cursor-default"
                   >
-                    DEVELOPER
-                  </motion.span>{' '}
-                  — CRAFTING AGENTIC AI &amp; FULL-STACK SYSTEMS.
+                    STUDENT
+                  </motion.span>.
                 </h1>
               )}
             </motion.div>
