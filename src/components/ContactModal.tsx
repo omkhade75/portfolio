@@ -60,7 +60,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       } else {
         alert(result.message || 'Error sending message. Please email omkhade09@gmail.com directly!');
       }
-    } catch (err) {
+    } catch {
       alert('Network error. Please email omkhade09@gmail.com directly!');
     } finally {
       setIsSending(false);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Cpu, ArrowRight, Zap, Database, Server, Globe, Terminal } from 'lucide-react';
+import { CheckCircle2, Cpu, Zap, Database, Server, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from './Motion';
 

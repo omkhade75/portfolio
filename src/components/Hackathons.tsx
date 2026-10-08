@@ -2,7 +2,7 @@ import React from 'react';
 import { Trophy, Award, Code2, Globe, ExternalLink, FileCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from './Motion';
-import { HACKATHONS, type HackathonItem } from '../data/portfolio';
+import { HACKATHONS } from '../data/portfolio';
 
 export const Hackathons: React.FC = () => {
 
