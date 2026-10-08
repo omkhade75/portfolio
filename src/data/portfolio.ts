@@ -179,9 +179,9 @@ export const HACKATHONS: HackathonItem[] = [
     year: '2026',
     organizer: 'OpenAI & NxtWave',
     tier: 'SPECIALIZED',
-    award: 'Participant',
+    award: 'Grand Finale Finalist',
     badgeColor: 'bg-neo-cyan text-[#121212]',
-    description: 'Built AI-powered solutions exploring Generative AI orchestration, LLM API integrations, and prompt engineering patterns.'
+    description: 'Qualified for the Grand Finale; built AI-powered solutions exploring Generative AI orchestration, LLM API integrations, and prompt engineering patterns.'
   },
   {
     title: 'Murf AI Hackathon',
@@ -206,9 +206,9 @@ export const HACKATHONS: HackathonItem[] = [
     year: '2026',
     organizer: 'NIAT',
     tier: 'SPECIALIZED',
-    award: 'Participant',
+    award: 'Grand Finale Finalist',
     badgeColor: 'bg-[#121212] text-white',
-    description: 'Built and presented end-to-end software prototypes demonstrating algorithmic problem solving and rapid execution.'
+    description: 'Qualified for the Grand Finale; built and presented end-to-end software prototypes demonstrating algorithmic problem solving and rapid execution.'
   }
 ];
 

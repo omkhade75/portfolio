@@ -73,13 +73,13 @@ This portfolio is an executive showcase designed specifically for **tech recruit
 ## 🏆 Leadership & Achievements
 
 - **General Secretary, E-Cell** — Sanjay Ghodawat University (led entrepreneurship activities, event coordination, and team operations)
-- **Hackathon Participation**:
-  - NASA Space Apps Challenge 2025
-  - Smart India Hackathon (SIH)
-  - OpenAI Academy × NxtWave Buildathon 2026
-  - Murf AI Hackathon 2026
-  - Meta × Scaler School of Technology Hackathon 2026
-  - NIAT TakeOver Hackathon 2026
+- **Hackathons & Competitions**:
+  - **OpenAI Academy × NxtWave Buildathon 2026** — *Grand Finale Finalist*
+  - **NIAT TakeOver Hackathon 2026** — *Grand Finale Finalist*
+  - NASA Space Apps Challenge 2025 — *Participant*
+  - Smart India Hackathon (SIH) — *Participant*
+  - Murf AI Hackathon 2026 — *Participant*
+  - Meta × Scaler School of Technology Hackathon 2026 — *Participant*
 - **Entrance Examination Scores**:
   - JEE Main: **91 Percentile**
   - MHT-CET: **95 Percentile**

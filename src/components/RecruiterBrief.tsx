@@ -143,11 +143,15 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>Projects:</strong> 3 Full-Stack & AI Systems</span>
+                  <span><strong>Grand Finalist:</strong> OpenAI &amp; NIAT Hackathons</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>Mobility:</strong> Remote, Hybrid & Relocation</span>
+                  <span><strong>Projects:</strong> 3 Full-Stack &amp; AI Systems</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="text-neo-red font-bold">★</span>
+                  <span><strong>Mobility:</strong> Remote, Hybrid &amp; Relocation</span>
                 </li>
               </ul>
             </motion.div>
