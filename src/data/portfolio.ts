@@ -188,13 +188,14 @@ export const HACKATHONS: HackathonItem[] = [
     certificateUrl: '/certificates/openai_academy_buildathon_2026.jpg'
   },
   {
-    title: 'Murf AI Hackathon',
+    title: 'Murf AI Hackathon & Workshop',
     year: '2026',
-    organizer: 'Murf AI',
+    organizer: 'Murf AI & NIAT',
     tier: 'SPECIALIZED',
-    award: 'Participant',
+    award: 'Workshop Certificate',
     badgeColor: 'bg-neo-purple text-white',
-    description: 'Engineered creative applications integrating speech synthesis APIs, voice workflows, and automated audio pipelines.'
+    description: 'Completed the hands-on Murf.AI application building workshop, exploring speech synthesis APIs, voice agent workflows, and practical AI integrations.',
+    certificateUrl: '/certificates/murf_ai_certificate_2026.jpg'
   },
   {
     title: 'Meta × Scaler School of Technology Hackathon',
