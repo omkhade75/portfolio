@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
               FEATURED <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block text-[#121212]">SYSTEMS.</span>
             </>
           }
-          description="Full-stack applications, local systems architectures, and AI platforms built by Om Khade — featuring an autonomous local AI workstation, decision intelligence OS, healthcare management, and voice agents."
+          description="Full-stack applications, local systems architectures, and enterprise AI platforms built by Om Khade — featuring an autonomous multi-tenant retail ERP, offline AI workstation, healthcare management, and voice agents."
           action={
             <div className="flex flex-wrap items-center gap-1.5 neo-glass p-1.5 shadow-brutal">
               {categories.map((cat) => (
@@ -109,6 +109,28 @@ export const Projects: React.FC = () => {
                     <p className="font-body text-xs sm:text-sm text-neo-dark font-medium leading-relaxed">
                       {project.description}
                     </p>
+
+                    {/* Key Metrics Badges Bar */}
+                    {project.keyMetrics && project.keyMetrics.length > 0 && (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                        {project.keyMetrics.map((km, kmIdx) => (
+                          <div
+                            key={kmIdx}
+                            className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2 shadow-brutal-sm flex items-start gap-1.5"
+                          >
+                            <span className="text-sm shrink-0">{km.icon}</span>
+                            <div className="min-w-0">
+                              <span className="font-grotesk font-black text-[10px] sm:text-[11px] text-[#121212] block leading-tight truncate">
+                                {km.title}
+                              </span>
+                              <span className="font-mono text-[8px] sm:text-[9px] text-neo-subtle block leading-tight truncate">
+                                {km.subtitle}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Demo Credentials Pill Bar (If Available) */}
                     {credentials.length > 0 && (
@@ -208,7 +230,7 @@ export const Projects: React.FC = () => {
                     {/* Architecture list */}
                     {archList.length > 0 && (
                       <div className="space-y-2">
-                        {archList.slice(0, 3).map((arch, aIdx) => (
+                        {archList.slice(0, 4).map((arch, aIdx) => (
                           <div
                             key={aIdx}
                             className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2.5 shadow-brutal-sm flex items-start gap-2.5"

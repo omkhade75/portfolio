@@ -41,6 +41,12 @@ export const AVAILABILITY = {
   modes: ['Remote', 'Hybrid', 'Relocation (Pune / Mumbai / Bengaluru)'],
 } as const;
 
+export interface ProjectMetric {
+  icon: string;
+  title: string;
+  subtitle: string;
+}
+
 export interface ProjectData {
   id: string;
   number: string;
@@ -53,6 +59,7 @@ export interface ProjectData {
   description: string;
   problem: string;
   solution: string;
+  keyMetrics?: ProjectMetric[];
   architecture: string[];
   engineeringHighlights: string[];
   tags: string[];
@@ -64,30 +71,54 @@ export interface ProjectData {
 
 export const PROJECTS: ProjectData[] = [
   {
-    id: 'omnimind',
+    id: 'bizora',
     number: '01',
-    title: 'OMNIMIND AI — DECISION INTELLIGENCE OS',
-    tagline: 'Modular decision-intelligence platform spanning billing/POS, inventory, CRM, suppliers, finance, operations, forecasting and AI workflows',
+    title: 'BIZORA AI — AUTONOMOUS MULTI-TENANT RETAIL ERP & DECISION OS',
+    tagline: 'Enterprise-grade, multi-tenant autonomous retail ERP featuring 5 micro-frontend portals, high-velocity POS billing, dual-database architecture, and Gemini 1.5 AI business intelligence.',
     category: 'Full-Stack',
     accentColor: 'bg-neo-yellow text-[#121212]',
-    badge: 'FLAGSHIP SYSTEM',
-    description: 'Built a modular decision-intelligence platform spanning billing/POS, inventory, CRM, suppliers, finance, operations, forecasting and AI workflows.',
-    problem: 'Retail and business operations suffer from fragmented tools for billing, inventory tracking, supplier management, and financial reporting — leading to data silos and poor decision-making.',
-    solution: 'Engineered a unified decision-intelligence OS with role-aware dashboards, RBAC, protected routes, audit logging, and AI-assisted decision support across all business functions.',
+    badge: 'FLAGSHIP ENTERPRISE ERP',
+    statusBadge: 'LIVE PRODUCTION',
+    description: 'Architected a scalable Turbo Monorepo delivering 5 specialized role portals (Store Owner, Super Admin, Supplier, Customer, Web Accounting). Engineered with polyglot persistence (Supabase PostgreSQL + MongoDB Atlas), autonomous self-healing daemons, Vapi AI voice calling, and automated WhatsApp billing.',
+    problem: 'Traditional retail operations suffer from fragmented tools, double-entry errors, inventory mismatches during peak flash sales, and server crashes from unhandled microservice exceptions.',
+    solution: 'Engineered an enterprise multi-tenant Turbo Monorepo with 5 micro-frontend SPAs, polyglot persistence (PostgreSQL 17 + MongoDB Atlas), crash-immune NestJS APIs, autonomous self-healing daemons, and Gemini 1.5 AI voice decision support.',
+    keyMetrics: [
+      { icon: '⚡', title: '5 Specialized Micro-Portals', subtitle: 'Complete business cycle coverage' },
+      { icon: '🛡️', title: '99.9% Live Uptime', subtitle: '5+ days zero-crash on Render' },
+      { icon: '🗄️', title: 'Dual Cloud Databases', subtitle: 'PostgreSQL 17 + MongoDB Atlas' },
+      { icon: '🧠', title: 'Gemini 1.5 + Vapi AI', subtitle: 'AI reasoning + voice calling' }
+    ],
     architecture: [
-      'Normalized PostgreSQL schema with 18+ interconnected models using Prisma ORM.',
-      'RBAC implementation with protected routes and audit logging.',
-      'Role-aware dashboards for sales, inventory, CRM, finance, and operations.',
-      'AI-assisted decision support workflows for business intelligence.'
+      'Polyglot Persistence: Supabase PostgreSQL 17 for ACID-compliant double-entry financial ledgers + MongoDB Atlas for high-throughput product catalogs & telemetry.',
+      'Enterprise Multi-Tenancy & Security: Strict Row-Level Security (RLS) and JWT claim-based tenant isolation ensuring zero cross-tenant data leaks.',
+      'Micro-Frontend Monorepo: 5 decoupled SPAs (Owner POS, Super Admin, Supplier Hub, Customer Storefront, Web Accounting) with sub-80ms edge latency.',
+      'Autonomous Self-Healing Daemon: Background watchdog that auto-recovers database connection pools, mitigates memory surges, and guarantees 99.9% uptime.'
     ],
     engineeringHighlights: [
-      'Designed a normalized PostgreSQL schema with 18+ interconnected models using Prisma ORM.',
-      'Implemented RBAC, protected routes, and audit logging for secure multi-role access.',
-      'Built role-aware dashboards and business workflows for sales, inventory, CRM, finance, and operations with AI-assisted decision support.'
+      'Polyglot Persistence: Supabase PostgreSQL 17 for ACID-compliant double-entry ledgers + MongoDB Atlas for high-throughput product catalogs & telemetry.',
+      'Enterprise Multi-Tenancy & Security: Strict Row-Level Security (RLS) and JWT claim-based tenant isolation ensuring zero cross-tenant data leaks.',
+      'Micro-Frontend Monorepo: 5 decoupled SPAs (Owner POS, Super Admin, Supplier Hub, Customer Storefront, Web Accounting) with sub-80ms edge latency.',
+      'Autonomous Self-Healing Daemon: Background watchdog that auto-recovers database connection pools, mitigates memory surges, and guarantees 99.9% uptime.',
+      'Gemini 1.5 Flash + Vapi AI Voice: Autonomous COO decision copilot with offline heuristic fallback, automated WhatsApp billing via Resend and WhatsApp API.'
     ],
-    tags: ['React', 'Node.js', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    tags: [
+      'React 19',
+      'NestJS',
+      'TypeScript',
+      'Supabase (PostgreSQL 17)',
+      'MongoDB Atlas',
+      'Prisma ORM',
+      'Google Gemini 1.5',
+      'Vapi AI Voice',
+      'Turbo Monorepo',
+      'Tailwind CSS'
+    ],
     githubUrl: 'https://github.com/omkhade75/omni-mind-vue',
     liveUrl: 'https://bizora-owner.onrender.com',
+    demoCredentials: [
+      { role: 'Store Owner', email: 'owner@bizora.com', pass: 'demo123' },
+      { role: 'Super Admin', email: 'admin@bizora.com', pass: 'demo123' }
+    ],
     featured: true
   },
   {
@@ -101,6 +132,12 @@ export const PROJECTS: ProjectData[] = [
     description: 'Built a multi-role hospital platform for patient registration, appointments, doctor/nurse workflows, wards/beds and emergency operations.',
     problem: 'Hospital administrative workflows face inefficiencies in patient registration, appointment scheduling, ward management, and role-segregated medical records access.',
     solution: 'Created a hospital management system with Supabase Auth, PostgreSQL Row Level Security, server-side functions, responsive role-based dashboards, PDF reports, and AI voice/chat integrations.',
+    keyMetrics: [
+      { icon: '⚡', title: 'Multi-Role SPAs', subtitle: 'Doctors, nurses, patients, admins' },
+      { icon: '🛡️', title: 'PostgreSQL RLS', subtitle: 'Strict row-level confidentiality' },
+      { icon: '🗄️', title: 'Supabase Serverless', subtitle: 'Real-time bed & appointment booking' },
+      { icon: '🧠', title: 'AI Voice & Speech', subtitle: 'Clinical voice records & PDF reporting' }
+    ],
     architecture: [
       'Supabase Auth with PostgreSQL Row Level Security for data confidentiality.',
       'Server-side functions for healthcare operations.',
@@ -129,6 +166,12 @@ export const PROJECTS: ProjectData[] = [
     description: 'Built a full-stack platform for configuring and managing AI voice agents, including onboarding, settings, phone routing and browser testing.',
     problem: 'Businesses need a streamlined way to configure, test, and deploy AI voice agents without complex infrastructure setup.',
     solution: 'Developed modular Express APIs with reusable React components, JWT authentication, voice/AI service integrations, and browser-based voice-agent testing.',
+    keyMetrics: [
+      { icon: '⚡', title: 'Voice Agent Hub', subtitle: 'Rapid voice model provisioning' },
+      { icon: '🛡️', title: 'JWT Authentication', subtitle: 'Secure RBAC token authorization' },
+      { icon: '🗄️', title: 'Modular Express', subtitle: 'Low-latency telephony routing' },
+      { icon: '🧠', title: 'In-Browser Testing', subtitle: 'Direct real-time audio testing' }
+    ],
     architecture: [
       'Modular Express APIs for voice agent configuration and management.',
       'Reusable React components for onboarding, settings, and phone routing.',
@@ -157,6 +200,12 @@ export const PROJECTS: ProjectData[] = [
     description: 'Architected a 100% offline, polyglot 3-tier local engineering platform running on the host machine with zero cloud API costs, Windows kernel thermal governance (<48°C idle), and hardcoded zero-access privacy shield.',
     problem: 'Cloud AI tools introduce severe code privacy risks, high monthly API token costs, and high electron compositor overhead that causes thermal throttling and battery drain on developer machines.',
     solution: 'Engineered an offline-first 3-tier architecture (React 18 client, Node 24 Express gateway with native SQLite WAL, Python 3.13 FastAPI) with Ollama CUDA acceleration on NVIDIA RTX 3050 and OS-level privacy boundaries.',
+    keyMetrics: [
+      { icon: '⚡', title: '100% Offline Workstation', subtitle: 'Zero recurring cloud API costs' },
+      { icon: '🛡️', title: '<48°C Thermal Guard', subtitle: 'Windows PSAPI memory recovery' },
+      { icon: '🗄️', title: 'Embedded SQLite (WAL)', subtitle: 'Node 24 native adapter & 57 tests' },
+      { icon: '🧠', title: 'RTX 3050 CUDA 13.1', subtitle: 'Dedicated local GPU inference' }
+    ],
     architecture: [
       'Client Layer (React 18 + Vite): 12 specialized engineering modules with pure OLED black (#000000) design system dropping compositor GPU load to 0%.',
       'Gateway Layer (Node.js 24 + Express): Non-blocking V8 event loop with embedded SQLite 3 in WAL mode via node:sqlite native adapter (PRAGMA journal_mode = WAL, PRAGMA busy_timeout = 5000).',

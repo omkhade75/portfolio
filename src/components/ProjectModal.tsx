@@ -66,6 +66,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               💡 {project.tagline}
             </div>
 
+            {/* Key Architectural Metrics */}
+            {project.keyMetrics && project.keyMetrics.length > 0 && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+                {project.keyMetrics.map((km, idx) => (
+                  <div key={idx} className="bg-white/90 dark:bg-white/10 backdrop-blur-sm border-2 border-[#121212] p-2.5 shadow-brutal-sm">
+                    <div className="text-base mb-1">{km.icon}</div>
+                    <span className="font-grotesk font-black text-xs text-[#121212] block leading-tight">
+                      {km.title}
+                    </span>
+                    <span className="font-mono text-[10px] text-neo-subtle block mt-0.5 leading-snug">
+                      {km.subtitle}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* Problem & Solution Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
               <div className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border-2 border-[#121212] p-3.5 shadow-brutal-sm">

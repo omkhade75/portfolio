@@ -3,26 +3,75 @@ import { CheckCircle2, Cpu, Zap, Database, Server, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from './Motion';
 
+interface SystemLayer {
+  name: string;
+  tech: string;
+  icon: React.ComponentType<{ className?: string }>;
+  detail: string;
+  problemSolved?: string;
+  systemImpact?: string;
+}
+
+interface SystemArchitectureData {
+  id: string;
+  systemName: string;
+  role: string;
+  badge: string;
+  accent: string;
+  problem: string;
+  solution: string;
+  layers: SystemLayer[];
+  impact: string;
+}
+
 export const SystemArchitecture: React.FC = () => {
   const [selectedSystemIndex, setSelectedSystemIndex] = useState<number>(0);
   const [selectedStepIndex, setSelectedStepIndex] = useState<number>(0);
 
-  const systems = [
+  const systems: SystemArchitectureData[] = [
     {
-      id: 'omnimind',
-      systemName: 'OmniMind AI — Decision Intelligence OS',
-      role: 'Modular Decision-Intelligence Platform',
-      badge: 'FLAGSHIP SYSTEM',
+      id: 'bizora',
+      systemName: 'BIZORA AI — Autonomous Multi-Tenant Retail ERP & Decision OS',
+      role: 'Enterprise Multi-Tenant Retail OS & Decision Intelligence',
+      badge: 'FLAGSHIP ENTERPRISE SYSTEM',
       accent: 'bg-neo-yellow text-[#121212]',
-      problem: 'Business operations suffer from fragmented tools for billing, inventory, supplier management, and financial reporting.',
-      solution: 'Built a modular decision-intelligence platform with normalized PostgreSQL schema (18+ models), RBAC, protected routes, audit logging, and AI-assisted decision support.',
+      problem: 'Fragmented tools causing slow checkouts, inventory mismatches, double-entry discrepancies, and server crashes during peak flash sales.',
+      solution: 'Architected a multi-tenant Turbo Monorepo delivering 5 micro-frontend SPAs, NestJS microservices, dual-database persistence, autonomous self-healing daemons, and Gemini 1.5 AI voice copilot.',
       layers: [
-        { name: 'ROLE DASHBOARDS', tech: 'React + Tailwind CSS', icon: Globe, detail: 'Role-aware dashboards for sales, inventory, CRM, finance, and operations workflows.' },
-        { name: 'API & AUTH', tech: 'Node.js + RBAC + Audit Logging', icon: Server, detail: 'Protected routes with role-based access control and comprehensive audit logging.' },
-        { name: 'DATABASE', tech: 'PostgreSQL + Prisma ORM', icon: Database, detail: 'Normalized PostgreSQL schema with 18+ interconnected models via Prisma ORM.' },
-        { name: 'AI WORKFLOWS', tech: 'AI-Assisted Decision Support', icon: Cpu, detail: 'AI workflows for forecasting, billing optimization, and operational decision support.' }
+        {
+          name: 'MICRO-FRONTEND SUITE',
+          tech: 'React 19 • Vite • TanStack Router • Tailwind CSS',
+          icon: Globe,
+          detail: '5 dedicated SPAs (Owner ERP/POS, Admin Governance, Supplier Dispatch, Customer 10-min Storefront, and Web Accounting) preventing monolithic bundle bloat.',
+          problemSolved: 'Fragmented tools causing slow checkouts, inventory mismatches, and messy paperwork.',
+          systemImpact: 'Instant barcode scanning, real-time inventory deductions, and sub-100ms UI response.'
+        },
+        {
+          name: 'CORE REST ENGINE & AUTH',
+          tech: 'NestJS • JWT • RBAC • Resend & WhatsApp API',
+          icon: Server,
+          detail: 'Centralized modular microservices handling POS transactions, transactional email dispatch via Resend, and automated WhatsApp billing alerts.',
+          problemSolved: 'Vulnerable monolithic endpoints and untracked multi-tenant billing alerts.',
+          systemImpact: 'Global crash-immunity filters that absorb unhandled exceptions, preventing server downtime.'
+        },
+        {
+          name: 'DUAL-DATABASE PERSISTENCE',
+          tech: 'PostgreSQL 17 (Prisma) + MongoDB Atlas Cloud',
+          icon: Database,
+          detail: 'Relational database for transactions, stock balances, and double-entry accounting paired with MongoDB Atlas for dynamic schemas, audit logs, and telemetry.',
+          problemSolved: 'Race conditions and financial discrepancies in concurrent transactions during peak sales.',
+          systemImpact: 'Atomic transactions prevent race conditions during flash sales; zero financial discrepancies.'
+        },
+        {
+          name: 'AI & VOICE INTELLIGENCE',
+          tech: 'Google Gemini 1.5 Flash • Vapi AI Voice • Heuristic Fallback',
+          icon: Cpu,
+          detail: 'Autonomous COO decision copilot providing margin analysis and automated purchase orders. Vapi AI voice agents for supplier confirmation calls.',
+          problemSolved: 'Manual supplier follow-ups, slow inventory forecasting, and downtime during external AI cloud outages.',
+          systemImpact: 'Includes an offline heuristic fallback engine that keeps generating business advice even during Google API network outages.'
+        }
       ],
-      impact: 'Unified platform covering billing/POS, inventory, CRM, suppliers, finance, operations, and AI-driven forecasting.'
+      impact: '99.9% uptime verification, instant barcode scanning with sub-100ms UI response, atomic ledger consistency, and zero cross-tenant data leaks.'
     },
     {
       id: 'medicare',
@@ -33,10 +82,38 @@ export const SystemArchitecture: React.FC = () => {
       problem: 'Hospital workflows face inefficiencies in patient registration, appointment scheduling, and role-segregated medical records access.',
       solution: 'Built a multi-role hospital platform with Supabase Auth, PostgreSQL Row Level Security, server-side functions, and AI integrations.',
       layers: [
-        { name: 'HOSPITAL DASHBOARD', tech: 'React + Vite + Tailwind CSS', icon: Globe, detail: 'Responsive role-based dashboards for doctors, nurses, patients, and administrators.' },
-        { name: 'AUTH & SECURITY', tech: 'Supabase Auth + PostgreSQL RLS', icon: Server, detail: 'Supabase Auth with PostgreSQL Row Level Security for strict data confidentiality.' },
-        { name: 'SERVER FUNCTIONS', tech: 'Supabase Server-Side Functions', icon: Database, detail: 'Server-side functions for appointment bookings, ward management, and reporting.' },
-        { name: 'AI INTEGRATIONS', tech: 'AI Voice & Chat + PDF Reports', icon: Cpu, detail: 'AI voice/chat integrations and automated PDF report generation.' }
+        {
+          name: 'HOSPITAL DASHBOARD',
+          tech: 'React + Vite + Tailwind CSS',
+          icon: Globe,
+          detail: 'Responsive role-based dashboards for doctors, nurses, patients, and administrators.',
+          problemSolved: 'Fragmented patient records and siloed communication across hospital departments.',
+          systemImpact: 'Unified real-time clinical dashboards with role-segregated navigation.'
+        },
+        {
+          name: 'AUTH & SECURITY',
+          tech: 'Supabase Auth + PostgreSQL RLS',
+          icon: Server,
+          detail: 'Supabase Auth with PostgreSQL Row Level Security for strict data confidentiality.',
+          problemSolved: 'Unauthorized cross-role access to sensitive patient clinical and billing data.',
+          systemImpact: 'Granular Row Level Security guaranteeing HIPAA/data protection alignment.'
+        },
+        {
+          name: 'SERVER FUNCTIONS',
+          tech: 'Supabase Server-Side Functions',
+          icon: Database,
+          detail: 'Server-side functions for appointment bookings, ward management, and reporting.',
+          problemSolved: 'Race conditions during bed occupancy bookings and emergency assignments.',
+          systemImpact: 'Atomic transactional allocation for hospital wards and appointment slots.'
+        },
+        {
+          name: 'AI INTEGRATIONS',
+          tech: 'AI Voice & Chat + PDF Reports',
+          icon: Cpu,
+          detail: 'AI voice/chat integrations and automated PDF report generation.',
+          problemSolved: 'Slow manual discharge summaries and clinical documentation backlogs.',
+          systemImpact: 'Instant automated PDF medical reports and hands-free voice notes.'
+        }
       ],
       impact: 'Comprehensive hospital management with secure multi-role access and AI-powered workflows.'
     },
@@ -49,12 +126,84 @@ export const SystemArchitecture: React.FC = () => {
       problem: 'Businesses need a streamlined way to configure, test, and deploy AI voice agents.',
       solution: 'Built modular Express APIs with reusable React components, JWT authentication, and browser-based voice-agent testing.',
       layers: [
-        { name: 'VOICE UI', tech: 'React + Reusable Components', icon: Globe, detail: 'Modular React interface for agent onboarding, settings, phone routing, and testing.' },
-        { name: 'API LAYER', tech: 'Node.js + Express + JWT', icon: Server, detail: 'Modular Express APIs with JWT authentication for secure agent management.' },
-        { name: 'DATA STORE', tech: 'Supabase', icon: Database, detail: 'Supabase backend storing agent configurations and session data.' },
-        { name: 'VOICE SERVICES', tech: 'AI Voice Integrations', icon: Cpu, detail: 'Voice/AI service integrations for browser-based agent testing.' }
+        {
+          name: 'VOICE UI',
+          tech: 'React + Reusable Components',
+          icon: Globe,
+          detail: 'Modular React interface for agent onboarding, settings, phone routing, and testing.',
+          problemSolved: 'Complex configuration screens preventing non-technical operators from creating voice agents.',
+          systemImpact: 'Sub-minute voice agent provisioning and prompt tuning workflows.'
+        },
+        {
+          name: 'API LAYER',
+          tech: 'Node.js + Express + JWT',
+          icon: Server,
+          detail: 'Modular Express APIs with JWT authentication for secure agent management.',
+          problemSolved: 'Unauthenticated API consumption and slow telephony dispatch.',
+          systemImpact: 'High-throughput stateless API endpoints with JWT session verification.'
+        },
+        {
+          name: 'DATA STORE',
+          tech: 'Supabase',
+          icon: Database,
+          detail: 'Supabase backend storing agent configurations and session data.',
+          problemSolved: 'Unstructured voice logs and unindexed prompt variations.',
+          systemImpact: 'Persistent agent configurations with real-time session history sync.'
+        },
+        {
+          name: 'VOICE SERVICES',
+          tech: 'AI Voice Integrations',
+          icon: Cpu,
+          detail: 'Voice/AI service integrations for browser-based agent testing.',
+          problemSolved: 'Expensive telephony charges during pre-production development and test cycles.',
+          systemImpact: 'Zero-cost browser-based simulated audio test environment.'
+        }
       ],
       impact: 'End-to-end platform for configuring, testing, and managing enterprise AI voice agents.'
+    },
+    {
+      id: 'orbit-ai',
+      systemName: 'ORBIT AI — Autonomous Local Workstation & Systems Copilot',
+      role: '100% Offline AI Workstation & Systems Engineering Copilot',
+      badge: 'SYSTEMS & LOCAL AI',
+      accent: 'bg-neo-green text-[#121212]',
+      problem: 'Cloud AI token billing, code privacy leakage risks, and background compositor CPU/GPU thermal spikes.',
+      solution: 'Offline 3-tier workstation (React 18, Node 24 Express + native SQLite WAL, Python 3.13 FastAPI) with Ollama CUDA 13.1 on RTX 3050 and Windows PSAPI kernel recovery.',
+      layers: [
+        {
+          name: 'CLIENT WORKSPACE',
+          tech: 'React 18 • Vite • OLED Pure Black #000000',
+          icon: Globe,
+          detail: '12 specialized engineering modules engineered with pure OLED black (#000000) design system eliminating CSS repaint loops for 0% idle GPU utilization.',
+          problemSolved: 'Heavy electron animations causing high battery drain and continuous compositor repaints.',
+          systemImpact: 'Drops browser compositor idle GPU and CPU usage to near 0%.'
+        },
+        {
+          name: 'EMBEDDED GATEWAY',
+          tech: 'Node.js 24 • Express • node:sqlite (WAL Mode)',
+          icon: Server,
+          detail: 'Non-blocking V8 event loop API gateway with embedded SQLite in WAL mode (PRAGMA busy_timeout = 5000), eliminating native C++ build errors.',
+          problemSolved: 'Database write locks under concurrent automated test suites and fragile native compilation.',
+          systemImpact: 'Non-blocking concurrent reads during write transactions, verified by 57 automated tests.'
+        },
+        {
+          name: 'AI & SANDBOX ENGINE',
+          tech: 'Python 3.13 • FastAPI • TF-IDF Vector RAG',
+          icon: Cpu,
+          detail: 'Local document RAG engine with citation tracking, AST syntax validation, and Docker-isolated C++ and Python execution environments.',
+          problemSolved: 'Hallucinated documentation and unsafe un-sandboxed code execution on host machines.',
+          systemImpact: 'Isolated multi-language execution with timeout protection and Colab-compatible notebook generation.'
+        },
+        {
+          name: 'HARDWARE & PRIVACY GUARD',
+          tech: 'Windows PSAPI • psutil • Ollama CUDA 13.1',
+          icon: Database,
+          detail: 'Direct ctypes PSAPI EmptyWorkingSet memory recovery and process priority demotion keeping temperatures <48°C, with regex privacy guard blocking .ssh/.aws.',
+          problemSolved: 'Laptop thermal throttling and risk of local models reading sensitive personal credentials.',
+          systemImpact: 'Stabilizes discrete GPU/CPU thermals under 48°C idle and enforces zero-access personal data boundary.'
+        }
+      ],
+      impact: '100% offline uptime, zero recurring cloud API costs, idle GPU thermal stabilization under 48°C, and hardcoded privacy shield.'
     }
   ];
 
@@ -210,14 +359,14 @@ export const SystemArchitecture: React.FC = () => {
                   <span className="font-mono text-[9px] font-bold text-neo-red uppercase block mb-0.5">
                     PROBLEM SOLVED:
                   </span>
-                  <p className="text-neo-dark line-clamp-2">{currentSystem.problem}</p>
+                  <p className="text-neo-dark leading-relaxed font-medium">{currentLayer.problemSolved || currentSystem.problem}</p>
                 </div>
 
                 <div className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2.5 shadow-brutal-sm">
                   <span className="font-mono text-[9px] font-bold text-neo-green uppercase block mb-0.5">
                     SYSTEM IMPACT:
                   </span>
-                  <p className="text-neo-dark line-clamp-2">{currentSystem.impact}</p>
+                  <p className="text-neo-dark leading-relaxed font-medium">{currentLayer.systemImpact || currentSystem.impact}</p>
                 </div>
               </div>
             </motion.div>
