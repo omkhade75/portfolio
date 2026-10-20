@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Layers } from 'lucide-react';
+import { useScroll, useMotionValueEvent } from 'framer-motion';
 import { ProjectModal } from './ProjectModal';
 import { SectionHeader } from './Motion';
 import { ProjectCard3D } from './ProjectCard3D';
@@ -10,6 +11,7 @@ export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const categories = ['All', 'Full-Stack', 'AI Platform'];
 
@@ -17,48 +19,51 @@ export const Projects: React.FC = () => {
     ? PROJECTS
     : (PROJECTS || []).filter((p) => p.category === filter);
 
+  // Track scroll through the dedicated 3D wheel track
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ['start start', 'end end'],
+  });
+
   // Reset active index when filter changes
   useEffect(() => {
     setActiveIndex(0);
   }, [filter]);
 
-  // Track the project closest to viewport center as user scrolls
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const viewportMid = scrollY + window.innerHeight * 0.45;
+  // Synchronously update active index as the wheel rotates
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (filteredProjects.length <= 1) {
+      setActiveIndex(0);
+      return;
+    }
+    const step = 1 / (filteredProjects.length - 1);
+    const currentIdx = Math.min(
+      Math.max(Math.round(latest / step), 0),
+      filteredProjects.length - 1
+    );
+    if (currentIdx !== activeIndex) {
+      setActiveIndex(currentIdx);
+    }
+  });
 
-      let closestIdx = 0;
-      let minDistance = Infinity;
-
-      filteredProjects.forEach((_, i) => {
-        const el = document.getElementById(`project-card-${i}`);
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const cardCenter = scrollY + rect.top + rect.height * 0.5;
-        const dist = Math.abs(viewportMid - cardCenter);
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestIdx = i;
-        }
-      });
-
-      setActiveIndex(closestIdx);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [filteredProjects]);
-
+  // Smoothly rotate the wheel to a specific project card
   const scrollToProject = (idx: number) => {
     triggerHaptic('selection');
     setActiveIndex(idx);
-    const el = document.getElementById(`project-card-${idx}`);
-    if (el) {
-      const yOffset = -95;
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    if (!trackRef.current) return;
+    const trackEl = trackRef.current;
+    const rect = trackEl.getBoundingClientRect();
+    const trackTop = window.pageYOffset + rect.top;
+    const trackHeight = trackEl.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollableDistance = Math.max(trackHeight - windowHeight, 0);
+
+    const targetProgress = filteredProjects.length > 1
+      ? idx / (filteredProjects.length - 1)
+      : 0;
+
+    const targetScrollY = trackTop + targetProgress * scrollableDistance;
+    window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
   };
 
   const handlePrev = () => {
@@ -83,7 +88,7 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-10 sm:py-16 lg:py-24 border-b-3 border-[#121212] bg-[#FAF7F2] dark:bg-[#0B0B0F] transition-colors">
+    <section id="projects" className="py-10 sm:py-16 border-b-3 border-[#121212] bg-[#FAF7F2] dark:bg-[#0B0B0F] transition-colors relative">
       <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-8 lg:px-12">
         {/* Section Header */}
         <SectionHeader
@@ -121,16 +126,16 @@ export const Projects: React.FC = () => {
           }
         />
 
-        {/* Interactive 3D Deck Navigator Bar */}
-        <div className="neo-glass-subtle p-2.5 sm:p-3 shadow-brutal-sm mb-8 sm:mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono">
+        {/* Interactive 3D Wheel Navigator Bar */}
+        <div className="neo-glass-subtle p-2.5 sm:p-3 shadow-brutal-sm mb-6 sm:mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="w-2.5 h-2.5 rounded-full bg-neo-green animate-pulse" />
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#121212] dark:text-white flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5 text-neo-blue" />
-              <span>3D CYLINDER DECK:</span>
+              <span>3D REVOLVING WHEEL:</span>
             </span>
             <span className="neo-badge bg-[#121212] text-white text-[10px] font-mono font-bold">
-              0{activeIndex + 1} / 0{filteredProjects.length} ACTIVE
+              0{activeIndex + 1} / 0{filteredProjects.length} IN FOCUS
             </span>
           </div>
 
@@ -140,7 +145,7 @@ export const Projects: React.FC = () => {
               <button
                 key={proj.id}
                 onClick={() => scrollToProject(pIdx)}
-                className={`px-2.5 py-1 text-[10px] sm:text-[11px] font-grotesk font-black uppercase border transition-all shrink-0 ${
+                className={`px-2.5 py-1 text-[10px] sm:text-[11px] font-grotesk font-black uppercase border transition-all shrink-0 cursor-pointer ${
                   activeIndex === pIdx
                     ? 'bg-neo-yellow text-[#121212] border-[#121212] shadow-brutal-sm -translate-y-0.5 font-extrabold'
                     : 'bg-white/80 dark:bg-white/10 text-neo-dark dark:text-gray-300 border-[#121212]/30 hover:border-[#121212]'
@@ -161,7 +166,7 @@ export const Projects: React.FC = () => {
                   ? 'opacity-40 cursor-not-allowed'
                   : 'hover:bg-neo-yellow active:scale-95 shadow-brutal-sm text-[#121212] dark:text-white cursor-pointer'
               }`}
-              title="Previous Project in Deck"
+              title="Rotate Wheel to Previous Project"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
               <span className="hidden sm:inline text-[10px]">PREV</span>
@@ -175,7 +180,7 @@ export const Projects: React.FC = () => {
                   ? 'opacity-40 cursor-not-allowed'
                   : 'hover:bg-neo-yellow active:scale-95 shadow-brutal-sm text-[#121212] dark:text-white cursor-pointer'
               }`}
-              title="Next Project in Deck"
+              title="Rotate Wheel to Next Project"
             >
               <span className="hidden sm:inline text-[10px]">NEXT</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -183,21 +188,36 @@ export const Projects: React.FC = () => {
           </div>
         </div>
 
-        {/* High-Trust Engineering Systems Showcase: 3D Circular Rolling Cylinder */}
+        {/* Scroll Track: Drives the 3D Wheel Rotation as the user scrolls */}
         <div
-          className="relative pb-12 sm:pb-16"
-          style={{ perspective: '1600px', transformStyle: 'preserve-3d' }}
+          ref={trackRef}
+          className="relative"
+          style={{
+            height: `${Math.max(filteredProjects.length * 85, 200)}vh`,
+          }}
         >
-          {filteredProjects.map((project, pIdx) => (
-            <ProjectCard3D
-              key={project.id || pIdx}
-              project={project}
-              index={pIdx}
-              total={filteredProjects.length}
-              isActive={activeIndex === pIdx}
-              onOpenModal={(proj) => setSelectedProject(proj)}
-            />
-          ))}
+          {/* Pinned 3D Wheel Stage Viewport */}
+          <div
+            className="sticky top-20 sm:top-24 lg:top-26 w-full z-10"
+            style={{
+              perspective: '1600px',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <div className="relative w-full min-h-[580px] sm:min-h-[520px] lg:h-[490px]">
+              {filteredProjects.map((project, pIdx) => (
+                <ProjectCard3D
+                  key={project.id || pIdx}
+                  project={project}
+                  index={pIdx}
+                  total={filteredProjects.length}
+                  scrollYProgress={scrollYProgress}
+                  isActive={activeIndex === pIdx}
+                  onOpenModal={(proj) => setSelectedProject(proj)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

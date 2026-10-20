@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useMemo } from 'react';
 import { ExternalLink, Layers, CheckCircle2, KeyRound } from 'lucide-react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
 import { GithubIcon } from './Icons';
 import type { ProjectData } from '../data/portfolio';
 
@@ -8,6 +8,7 @@ interface ProjectCard3DProps {
   project: ProjectData;
   index: number;
   total: number;
+  scrollYProgress: MotionValue<number>;
   isActive: boolean;
   onOpenModal: (project: ProjectData) => void;
 }
@@ -16,50 +17,95 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
   project,
   index,
   total,
+  scrollYProgress,
   isActive,
   onOpenModal,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Scroll tracking as this card moves through the viewport
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
+  // Compute keyframes for this card in the 3D rotating wheel
+  const keyframes = useMemo(() => {
+    if (total <= 1) {
+      return {
+        range: [0, 1],
+        rotateX: [0, 0],
+        y: [0, 0],
+        z: [0, 0],
+        scale: [1, 1],
+        opacity: [1, 1],
+      };
+    }
 
-  // Circular 3D cylinder roll:
-  // 0.0 -> 0.35: Enters from bottom, curving up from the cylinder (rotateX: -14deg -> -3deg)
-  // 0.45 -> 0.55: Centered in active reading spotlight (rotateX: 0deg, scale: 1, z: 0)
-  // 0.65 -> 1.0: Exits past top, curving back into the cylinder (rotateX: 3deg -> 14deg, scale: 0.90, z: -90px)
+    const step = 1 / (total - 1);
+    const C = index * step;
+    const flatD = step * 0.28; // zone where card is flat and in full spotlight
+
+    if (index === 0) {
+      return {
+        range: [0, flatD, step],
+        rotateX: [0, 0, 48],
+        y: [0, 0, -200],
+        z: [0, 0, -320],
+        scale: [1, 1, 0.82],
+        opacity: [1, 1, 0],
+      };
+    } else if (index === total - 1) {
+      return {
+        range: [C - step, C - flatD, 1],
+        rotateX: [-48, 0, 0],
+        y: [200, 0, 0],
+        z: [-320, 0, 0],
+        scale: [0.82, 1, 1],
+        opacity: [0, 1, 1],
+      };
+    } else {
+      return {
+        range: [C - step, C - flatD, C + flatD, C + step],
+        rotateX: [-48, 0, 0, 48],
+        y: [200, 0, 0, -200],
+        z: [-320, 0, 0, -320],
+        scale: [0.82, 1, 1, 0.82],
+        opacity: [0, 1, 1, 0],
+      };
+    }
+  }, [index, total]);
+
   const rotateX = useTransform(
     scrollYProgress,
-    [0, 0.28, 0.45, 0.55, 0.72, 1],
-    shouldReduceMotion ? [0, 0, 0, 0, 0, 0] : [-12, -4, 0, 0, 4, 12]
-  );
-
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.28, 0.45, 0.55, 0.72, 1],
-    shouldReduceMotion ? [1, 1, 1, 1, 1, 1] : [0.93, 0.98, 1, 1, 0.98, 0.91]
-  );
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.35, 0.65, 0.82, 1],
-    [0.45, 0.85, 1, 1, 0.85, 0.4]
-  );
-
-  const z = useTransform(
-    scrollYProgress,
-    [0, 0.28, 0.45, 0.55, 0.72, 1],
-    shouldReduceMotion ? [0, 0, 0, 0, 0, 0] : [-70, -20, 0, 0, -20, -90]
+    keyframes.range,
+    shouldReduceMotion ? keyframes.range.map(() => 0) : keyframes.rotateX
   );
 
   const y = useTransform(
     scrollYProgress,
-    [0, 0.45, 0.55, 1],
-    shouldReduceMotion ? [0, 0, 0, 0] : [35, 0, 0, -35]
+    keyframes.range,
+    shouldReduceMotion ? keyframes.range.map(() => 0) : keyframes.y
+  );
+
+  const z = useTransform(
+    scrollYProgress,
+    keyframes.range,
+    shouldReduceMotion ? keyframes.range.map(() => 0) : keyframes.z
+  );
+
+  const scale = useTransform(
+    scrollYProgress,
+    keyframes.range,
+    shouldReduceMotion ? keyframes.range.map(() => 1) : keyframes.scale
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    keyframes.range,
+    keyframes.opacity
+  );
+
+  const pointerEvents = useTransform(opacity, (val) =>
+    val > 0.45 ? 'auto' : 'none'
+  );
+
+  const zIndex = useTransform(opacity, (val) =>
+    val > 0.7 ? 30 : val > 0.1 ? 20 : 5
   );
 
   const highlights = project?.engineeringHighlights || [];
@@ -68,43 +114,39 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
   const credentials = project?.demoCredentials || [];
 
   return (
-    <div
-      id={`project-card-${index}`}
-      ref={containerRef}
-      className="relative mb-8 sm:mb-12 lg:mb-16 last:mb-0 lg:sticky"
+    <motion.div
       style={{
-        top: `calc(84px + ${index * 14}px)`,
-        zIndex: index + 10,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        rotateX,
+        y,
+        z,
+        scale,
+        opacity,
+        pointerEvents,
+        zIndex,
+        transformStyle: 'preserve-3d',
+        transformOrigin: '50% 50%',
       }}
+      className="w-full"
     >
-      <motion.div
-        style={{
-          scale,
-          rotateX,
-          y,
-          z,
-          opacity,
-          transformStyle: 'preserve-3d',
-          transformOrigin: 'center center',
-        }}
-        whileHover={{ y: -3, scale: 1.01 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-        className={`neo-box p-5 sm:p-7 lg:p-8 border-2 sm:border-3 border-[#121212] shadow-brutal-lg relative overflow-hidden group transition-all duration-300 bg-white/95 dark:bg-[#121218]/95 backdrop-blur-md ${
-          isActive
-            ? 'ring-2 ring-neo-yellow border-[#121212]'
-            : 'hover:border-[#121212]'
+      <div
+        className={`neo-box p-4 sm:p-6 lg:p-7 border-2 sm:border-3 border-[#121212] shadow-brutal-lg relative overflow-hidden group transition-all duration-200 bg-white dark:bg-[#121218] ${
+          isActive ? 'ring-2 ring-neo-yellow border-[#121212]' : 'hover:border-[#121212]'
         }`}
       >
-        {/* Subtle Perspective Depth Highlight Strip */}
+        {/* Subtle 3D Cylinder Depth Edge Glow */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#121212]/20 to-transparent pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-start">
           {/* Left 7 Columns: Overview, Badges, Metrics & CTAs */}
-          <div className="lg:col-span-7 space-y-3.5">
+          <div className="lg:col-span-7 space-y-3">
             {/* Badge Bar */}
             <div className="flex items-center gap-2 flex-wrap">
               <span
-                className={`w-8 h-8 ${project.accentColor} border-2 border-[#121212] shadow-brutal-sm font-grotesk font-black text-xs flex items-center justify-center`}
+                className={`w-7 h-7 sm:w-8 sm:h-8 ${project.accentColor} border-2 border-[#121212] shadow-brutal-sm font-grotesk font-black text-xs flex items-center justify-center`}
               >
                 {project.number}
               </span>
@@ -133,10 +175,10 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Title & Tagline */}
             <div>
-              <h3 className="font-grotesk font-black text-xl sm:text-2xl lg:text-3xl text-[#121212] dark:text-white leading-snug group-hover:text-neo-blue transition-colors">
+              <h3 className="font-grotesk font-black text-lg sm:text-2xl lg:text-3xl text-[#121212] dark:text-white leading-snug group-hover:text-neo-blue transition-colors">
                 {project.title}
               </h3>
-              <p className="font-body text-xs sm:text-sm font-bold text-neo-blue mt-1">
+              <p className="font-body text-xs sm:text-sm font-bold text-neo-blue mt-0.5">
                 {project.tagline}
               </p>
             </div>
@@ -148,7 +190,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Key Metrics Badges Bar */}
             {project.keyMetrics && project.keyMetrics.length > 0 && (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-0.5">
                 {project.keyMetrics.map((km, kmIdx) => (
                   <div
                     key={kmIdx}
@@ -170,16 +212,16 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Demo Credentials Pill Bar (If Available) */}
             {credentials.length > 0 && (
-              <div className="neo-glass-subtle p-2.5 sm:p-3 shadow-brutal-sm flex flex-wrap items-center gap-2 text-xs font-mono">
-                <div className="flex items-center gap-1.5 font-bold text-[#121212] dark:text-white">
+              <div className="neo-glass-subtle p-2 sm:p-2.5 shadow-brutal-sm flex flex-wrap items-center gap-2 text-xs font-mono">
+                <div className="flex items-center gap-1.5 font-bold text-[#121212] dark:text-white text-[11px]">
                   <KeyRound className="w-3.5 h-3.5 text-neo-red" />
                   <span>DEMO ACCESS:</span>
                 </div>
-                <div className="flex flex-wrap items-center gap-2 text-[11px]">
+                <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
                   {credentials.map((c, cIdx) => (
                     <span
                       key={cIdx}
-                      className="bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-[#121212] px-2 py-0.5 font-bold text-[#121212] dark:text-white"
+                      className="bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-[#121212] px-2 py-0.5 font-bold text-[#121212] dark:text-white text-[10px]"
                     >
                       <span className="text-neo-blue">{c.role}:</span> {c.email} /{' '}
                       <span className="text-neo-red font-mono">{c.pass}</span>
@@ -191,7 +233,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Tech Chips */}
             {tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 pt-1">
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
                 {tags.map((tag, tIdx) => (
                   <span
                     key={tIdx}
@@ -204,7 +246,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
               {project.liveUrl ? (
                 <motion.a
                   whileHover={{ scale: 1.03, y: -2 }}
@@ -212,7 +254,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="neo-btn bg-neo-yellow hover:bg-neo-yellowHover text-xs px-4 py-2.5 font-grotesk font-black text-[#121212] shadow-brutal"
+                  className="neo-btn bg-neo-yellow hover:bg-neo-yellowHover text-xs px-4 py-2 font-grotesk font-black text-[#121212] shadow-brutal"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>LAUNCH LIVE DEMO</span>
@@ -224,7 +266,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="neo-btn bg-neo-green text-[#121212] hover:bg-emerald-300 text-xs px-4 py-2.5 font-grotesk font-black shadow-brutal flex items-center gap-1.5"
+                  className="neo-btn bg-neo-green text-[#121212] hover:bg-emerald-300 text-xs px-4 py-2 font-grotesk font-black shadow-brutal flex items-center gap-1.5"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
                   <span>EXPLORE REPOSITORY</span>
@@ -235,7 +277,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => onOpenModal(project)}
-                className="neo-btn bg-white/90 dark:bg-white/10 backdrop-blur-sm hover:bg-neo-paper text-xs px-4 py-2.5 font-grotesk font-bold text-[#121212] dark:text-white shadow-brutal"
+                className="neo-btn bg-white/90 dark:bg-white/10 backdrop-blur-sm hover:bg-neo-paper text-xs px-4 py-2 font-grotesk font-bold text-[#121212] dark:text-white shadow-brutal"
               >
                 <Layers className="w-3.5 h-3.5 text-neo-blue" />
                 <span>ARCHITECTURE SPECS</span>
@@ -248,7 +290,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="neo-btn bg-neo-paper hover:bg-white text-xs px-3.5 py-2.5 font-grotesk font-bold text-[#121212]"
+                  className="neo-btn bg-neo-paper hover:bg-white text-xs px-3 py-2 font-grotesk font-bold text-[#121212]"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">SOURCE CODE</span>
@@ -258,8 +300,8 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
           </div>
 
           {/* Right 5 Columns: Architecture Highlights & Spec Box */}
-          <div className="lg:col-span-5 space-y-3 neo-glass-subtle p-4 sm:p-5 shadow-brutal-sm">
-            <div className="border-b-2 border-[#121212] pb-2 flex items-center justify-between font-mono text-xs font-bold">
+          <div className="lg:col-span-5 space-y-2.5 neo-glass-subtle p-3.5 sm:p-4 shadow-brutal-sm">
+            <div className="border-b-2 border-[#121212] pb-1.5 flex items-center justify-between font-mono text-xs font-bold">
               <span className="text-[#121212] dark:text-white uppercase">ENGINEERING SPECIFICATIONS</span>
               <span className="text-neo-green font-bold flex items-center gap-1">
                 <CheckCircle2 className="w-3 h-3" /> VERIFIED
@@ -268,16 +310,16 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Architecture list */}
             {archList.length > 0 && (
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {archList.slice(0, 4).map((arch, aIdx) => (
                   <div
                     key={aIdx}
-                    className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2.5 shadow-brutal-sm flex items-start gap-2.5"
+                    className="bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2 shadow-brutal-sm flex items-start gap-2"
                   >
-                    <span className="font-mono text-[10px] font-bold bg-[#121212] text-white px-1.5 py-0.5 shrink-0 mt-0.5">
+                    <span className="font-mono text-[9px] font-bold bg-[#121212] text-white px-1.5 py-0.5 shrink-0 mt-0.5">
                       0{aIdx + 1}
                     </span>
-                    <p className="font-body text-xs text-neo-dark dark:text-gray-300 font-medium leading-relaxed">
+                    <p className="font-body text-[11px] sm:text-xs text-neo-dark dark:text-gray-300 font-medium leading-relaxed">
                       {arch}
                     </p>
                   </div>
@@ -287,21 +329,21 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
 
             {/* Highlights */}
             {highlights.length > 0 && (
-              <div className="space-y-1.5 pt-1 border-t border-[#121212]/20">
+              <div className="space-y-1 pt-1 border-t border-[#121212]/20">
                 {highlights.slice(0, 2).map((highlight, hIdx) => (
                   <div
                     key={hIdx}
-                    className="flex items-start gap-2 text-xs text-neo-dark dark:text-gray-300 font-medium"
+                    className="flex items-start gap-1.5 text-[11px] text-neo-dark dark:text-gray-300 font-medium"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-neo-green shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
+                    <CheckCircle2 className="w-3 h-3 text-neo-green shrink-0 mt-0.5" />
+                    <span className="line-clamp-2">{highlight}</span>
                   </div>
                 ))}
               </div>
             )}
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
