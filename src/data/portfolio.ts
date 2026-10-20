@@ -259,6 +259,16 @@ export const HACKATHONS: HackathonItem[] = [
     certificateUrl: '/certificates/smart_india_hackathon_2025.pdf'
   },
   {
+    title: 'Adobe University Hackathon',
+    year: '2026',
+    organizer: 'Adobe & Unstop',
+    tier: 'SPECIALIZED',
+    award: 'Participant',
+    badgeColor: 'bg-neo-red text-white',
+    description: 'Participated in the Adobe University Hackathon organised by Adobe & Unstop, solving competitive software engineering challenges.',
+    certificateUrl: '/certificates/adobe_hackathon_2026.pdf'
+  },
+  {
     title: 'OpenAI Academy × NxtWave Buildathon',
     year: '2026',
     organizer: 'OpenAI & NxtWave',
