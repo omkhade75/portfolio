@@ -49,6 +49,7 @@ export interface ProjectData {
   category: 'Full-Stack' | 'AI Platform';
   accentColor: string;
   badge: string;
+  statusBadge?: string;
   description: string;
   problem: string;
   solution: string;
@@ -124,6 +125,7 @@ export const PROJECTS: ProjectData[] = [
     category: 'AI Platform',
     accentColor: 'bg-neo-cyan text-[#121212]',
     badge: 'VOICE AI',
+    statusBadge: 'SOURCE REPO',
     description: 'Built a full-stack platform for configuring and managing AI voice agents, including onboarding, settings, phone routing and browser testing.',
     problem: 'Businesses need a streamlined way to configure, test, and deploy AI voice agents without complex infrastructure setup.',
     solution: 'Developed modular Express APIs with reusable React components, JWT authentication, voice/AI service integrations, and browser-based voice-agent testing.',
@@ -141,6 +143,36 @@ export const PROJECTS: ProjectData[] = [
     ],
     tags: ['React', 'Vite', 'Node.js', 'Express', 'Supabase', 'JWT'],
     githubUrl: 'https://github.com/omkhade75/ai-calling-agent',
+    featured: true
+  },
+  {
+    id: 'orbit-ai',
+    number: '04',
+    title: 'ORBIT AI — AUTONOMOUS LOCAL AI WORKSTATION',
+    tagline: 'Offline-first, polyglot 3-tier engineering workstation with autonomous coding agent, document RAG & hardware thermal copilot',
+    category: 'AI Platform',
+    accentColor: 'bg-neo-green text-[#121212]',
+    badge: 'SYSTEMS & LOCAL AI',
+    statusBadge: '100% LOCAL OFFLINE',
+    description: 'Architected a 100% offline, polyglot 3-tier local engineering platform running on the host machine with zero cloud API costs, Windows kernel thermal governance (<48°C idle), and hardcoded zero-access privacy shield.',
+    problem: 'Cloud AI tools introduce severe code privacy risks, high monthly API token costs, and high electron compositor overhead that causes thermal throttling and battery drain on developer machines.',
+    solution: 'Engineered an offline-first 3-tier architecture (React 18 client, Node 24 Express gateway with native SQLite WAL, Python 3.13 FastAPI) with Ollama CUDA acceleration on NVIDIA RTX 3050 and OS-level privacy boundaries.',
+    architecture: [
+      'Client Layer (React 18 + Vite): 12 specialized engineering modules with pure OLED black (#000000) design system dropping compositor GPU load to 0%.',
+      'Gateway Layer (Node.js 24 + Express): Non-blocking V8 event loop with embedded SQLite 3 in WAL mode via node:sqlite native adapter (PRAGMA journal_mode = WAL, PRAGMA busy_timeout = 5000).',
+      'AI & Systems Layer (Python 3.13 + FastAPI): Document RAG engine with TF-IDF vector similarity and autonomous sandboxed workspace generator.',
+      'Hardware Controller & Thermal Governance: Direct ctypes Windows PSAPI (EmptyWorkingSet) memory recovery and psutil priority demotion stabilizing idle thermals under 48°C and <10W.',
+      'Zero-Access Privacy Shield & Offline Inference: Strict OS path-screening boundary blocking access to sensitive directories (.ssh, .aws, browser credentials), offloading local models to NVIDIA RTX 3050 GPU via CUDA 13.1.'
+    ],
+    engineeringHighlights: [
+      'Windows PSAPI Memory Recovery: Directly invokes ctypes.windll.psapi.EmptyWorkingSet across background processes, flushing inactive physical memory pages and stabilizing thermals below 48°C.',
+      'Zero-Access Privacy Shield: Built an OS path-screening regex guard intercepting all file system operations to hard-block AI access to .ssh, .aws, browser credentials, and personal folders.',
+      'Resilient Embedded Persistence: Implemented Node 24 native SQLite adapter with Write-Ahead Logging (WAL) and automatic busy-timeout retries, verified with 57 automated integration tests.',
+      'Sandboxed Execution & AST Validation: Implemented isolated execution for C++ and Python with Docker containers, timeout enforcement, and Python ast parsing for Google Colab-compatible notebooks.',
+      'GPU-Accelerated Local Inference: Offloaded local models (Qwen 3.5 4B) 100% to NVIDIA RTX 3050 Laptop GPU (6GB VRAM) via Ollama and CUDA 13.1 with 120-second cold-start handling.'
+    ],
+    tags: ['React 18', 'Node.js 24', 'Python 3.13', 'FastAPI', 'Express.js', 'SQLite (WAL)', 'Ollama (CUDA)', 'Windows PSAPI', 'Docker', 'C++'],
+    githubUrl: 'https://github.com/omkhade75/prototype',
     featured: true
   }
 ];

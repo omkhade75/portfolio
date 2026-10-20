@@ -3,7 +3,7 @@ import { ArrowUpRight, Cpu, Download, Mail, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { Hero3DCanvas } from './Hero3DCanvas';
-import { PERSONAL, EDUCATION, AVAILABILITY } from '../data/portfolio';
+import { PERSONAL, EDUCATION, AVAILABILITY, PROJECTS } from '../data/portfolio';
 import { useTheme } from '../context/ThemeContext';
 import { triggerHaptic } from '../utils/haptics';
 
@@ -221,10 +221,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
               <div className="neo-glass-subtle p-2.5 shadow-brutal-sm hover:-translate-y-0.5 transition-transform">
                 <span className="font-grotesk font-black text-lg sm:text-xl text-[#121212] block leading-none">
-                  3 <span className="text-xs font-mono font-bold text-neo-green">PROJECTS</span>
+                  {PROJECTS.length} <span className="text-xs font-mono font-bold text-neo-green">PROJECTS</span>
                 </span>
                 <span className="font-mono text-[9px] sm:text-[10px] text-neo-subtle font-bold uppercase tracking-wider">
-                  Full-Stack & AI
+                  Full-Stack & Systems
                 </span>
               </div>
 

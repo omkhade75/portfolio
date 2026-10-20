@@ -165,7 +165,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <span>SOURCE REPOSITORY</span>
               </motion.a>
 
-              {project.liveUrl && (
+              {project.liveUrl ? (
                 <motion.a
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
@@ -177,6 +177,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <span>OPEN LIVE SYSTEM</span>
                   <ExternalLink className="w-4 h-4" />
                 </motion.a>
+              ) : (
+                <div className="neo-badge bg-[#121212] text-white font-mono text-[11px] font-bold py-2 px-3 flex items-center gap-1.5 border border-[#121212]">
+                  <span className="w-2 h-2 rounded-full bg-neo-green animate-pulse" />
+                  <span>{project.statusBadge || '100% LOCAL OFFLINE ARCHITECTURE'}</span>
+                </div>
               )}
             </div>
 

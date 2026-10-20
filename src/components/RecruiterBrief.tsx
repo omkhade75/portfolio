@@ -1,7 +1,7 @@
 import React from 'react';
 import { Briefcase, Award, CheckCircle2, Download, Mail, Code2, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { PERSONAL, EDUCATION, AVAILABILITY } from '../data/portfolio';
+import { PERSONAL, EDUCATION, AVAILABILITY, PROJECTS } from '../data/portfolio';
 
 interface RecruiterBriefProps {
   onOpenContact: () => void;
@@ -147,7 +147,7 @@ export const RecruiterBrief: React.FC<RecruiterBriefProps> = ({ onOpenContact })
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>
-                  <span><strong>Projects:</strong> 3 Full-Stack &amp; AI Systems</span>
+                  <span><strong>Projects:</strong> {PROJECTS.length} Full-Stack, Systems &amp; AI Platforms</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-neo-red font-bold">★</span>

@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
               FEATURED <span className="bg-neo-yellow px-2 py-0.5 border-3 border-[#121212] shadow-brutal inline-block text-[#121212]">SYSTEMS.</span>
             </>
           }
-          description="Full-stack applications and AI-powered systems built by Om Khade — featuring a decision intelligence OS, a multi-role hospital management system, and an enterprise voice agent platform."
+          description="Full-stack applications, local systems architectures, and AI platforms built by Om Khade — featuring an autonomous local AI workstation, decision intelligence OS, healthcare management, and voice agents."
           action={
             <div className="flex flex-wrap items-center gap-1.5 neo-glass p-1.5 shadow-brutal">
               {categories.map((cat) => (
@@ -87,9 +87,11 @@ export const Projects: React.FC = () => {
                       <span className="neo-badge bg-neo-yellow text-[9px] sm:text-[10px] font-bold text-[#121212]">
                         {project.badge}
                       </span>
-                      <span className="neo-badge bg-neo-green text-[#121212] text-[9px] sm:text-[10px] font-mono font-bold ml-auto sm:ml-0 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-                        LIVE DEMO
+                      <span className={`neo-badge text-[9px] sm:text-[10px] font-mono font-bold ml-auto sm:ml-0 flex items-center gap-1 ${
+                        project.liveUrl ? 'bg-neo-green text-[#121212]' : 'bg-[#121212] text-white'
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${project.liveUrl ? 'bg-black animate-pulse' : 'bg-neo-green'}`} />
+                        {project.statusBadge || (project.liveUrl ? 'LIVE DEMO' : 'LOCAL SYSTEM')}
                       </span>
                     </div>
 
@@ -141,7 +143,7 @@ export const Projects: React.FC = () => {
 
                     {/* Action Buttons */}
                     <div className="flex flex-wrap items-center gap-2.5 pt-2">
-                      {project.liveUrl && (
+                      {project.liveUrl ? (
                         <motion.a
                           whileHover={{ scale: 1.03, y: -2 }}
                           whileTap={{ scale: 0.97 }}
@@ -152,6 +154,18 @@ export const Projects: React.FC = () => {
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
                           <span>LAUNCH LIVE DEMO</span>
+                        </motion.a>
+                      ) : (
+                        <motion.a
+                          whileHover={{ scale: 1.03, y: -2 }}
+                          whileTap={{ scale: 0.97 }}
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="neo-btn bg-neo-green text-[#121212] hover:bg-emerald-300 text-xs px-4 py-2.5 font-grotesk font-black shadow-brutal flex items-center gap-1.5"
+                        >
+                          <GithubIcon className="w-3.5 h-3.5" />
+                          <span>EXPLORE REPOSITORY</span>
                         </motion.a>
                       )}
 
@@ -165,7 +179,7 @@ export const Projects: React.FC = () => {
                         <span>ARCHITECTURE SPECS</span>
                       </motion.button>
 
-                      {project.githubUrl && (
+                      {project.liveUrl && project.githubUrl && (
                         <motion.a
                           whileHover={{ scale: 1.03, y: -2 }}
                           whileTap={{ scale: 0.97 }}
