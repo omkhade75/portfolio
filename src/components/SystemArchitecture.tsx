@@ -204,6 +204,50 @@ export const SystemArchitecture: React.FC = () => {
         }
       ],
       impact: '100% offline uptime, zero recurring cloud API costs, idle GPU thermal stabilization under 48°C, and hardcoded privacy shield.'
+    },
+    {
+      id: 'saffron',
+      systemName: 'Saffron OS — Royal Indian Dining & Gastronomic Operating System',
+      role: 'Restaurant Operating System & Autonomous Load Gateway',
+      badge: 'GASTRONOMIC OS & 3D STOREFRONT',
+      accent: 'bg-neo-orange text-white',
+      problem: 'Dining rush-hour bottlenecks: slow cashier billing, table order miscommunications, and database crashes under concurrent guest QR scans.',
+      solution: 'Decoupled two-tier architecture uniting a Three.js 3D customer storefront, 16-table contactless QR sessions, cashier POS, kitchen KDS, and an autonomous load-resilient Express gateway.',
+      layers: [
+        {
+          name: '3D CUSTOMER STOREFRONT',
+          tech: 'React 19 • Three.js WebGL • TanStack Router • Tailwind CSS',
+          icon: Globe,
+          detail: 'Interactive Three.js canvas rendering ambient hearth embers, 100-dish royal catalog, contactless 16-table QR ordering, and live cooking progress tracking.',
+          problemSolved: 'Slow paper menu orders and long customer wait times during peak dining hours.',
+          systemImpact: 'Direct mobile table ordering with sub-second order dispatch and 0% physical menu overhead.'
+        },
+        {
+          name: 'AUTONOMOUS LOAD GATEWAY',
+          tech: 'Node.js • Express • In-Memory LRU Cache • Watchdog',
+          icon: Server,
+          detail: 'Autonomous Load Agent with sub-15ms LRU caching, zero-crash process exception watchdog, and smart 3,500 req/15min rate limiting for shared restaurant Wi-Fi.',
+          problemSolved: 'Server crashes during sudden flash surges and API exhaustion on shared restaurant Wi-Fi routers.',
+          systemImpact: 'Reduces database read operations by 80% and ensures zero-downtime service continuity.'
+        },
+        {
+          name: 'RELATIONAL PERSISTENCE (ACID)',
+          tech: 'Supabase PostgreSQL • Prisma ORM • Connection Pooling',
+          icon: Database,
+          detail: 'ACID-compliant relational schemas with foreign key integrity linking orders, table tokens, staff RBAC, and pantry inventory balances.',
+          problemSolved: 'Race conditions, order item double-counting, and inventory mismatches during peak dining orders.',
+          systemImpact: 'Atomic transactions guarantee 100% order accuracy and consistent billing ledger data.'
+        },
+        {
+          name: 'STAFF WORKSTATIONS & KDS',
+          tech: 'POS Terminal • Kitchen Display (KDS) • Telemetry Dashboard',
+          icon: Cpu,
+          detail: 'High-speed POS cashier workstation with 5% GST and split billing, KDS workflow pipeline (Pending ➔ Delivered), and live DB latency telemetry.',
+          problemSolved: 'Kitchen-cashier communication delays, missed order tickets, and unmonitored API latencies.',
+          systemImpact: 'Instant visual kitchen pipeline with audio alerts and live backend health telemetry.'
+        }
+      ],
+      impact: 'Sub-15ms LRU hot cache response, 80% reduction in database read load, zero mid-service crashes, and unified 16-table QR and cashier POS coordination.'
     }
   ];
 

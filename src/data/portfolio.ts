@@ -223,6 +223,58 @@ export const PROJECTS: ProjectData[] = [
     tags: ['React 18', 'Node.js 24', 'Python 3.13', 'FastAPI', 'Express.js', 'SQLite (WAL)', 'Ollama (CUDA)', 'Windows PSAPI', 'Docker', 'C++'],
     githubUrl: 'https://github.com/omkhade75/prototype',
     featured: true
+  },
+  {
+    id: 'saffron-os',
+    number: '05',
+    title: 'SAFFRON — ROYAL INDIAN DINING & GASTRONOMIC OS',
+    tagline: 'Full-stack, two-tier restaurant platform uniting a 3D dining storefront, contactless QR ordering, real-time POS & autonomous load-resilient gateway',
+    category: 'Full-Stack',
+    accentColor: 'bg-neo-orange text-white',
+    badge: 'HOSPITALITY OS & 3D STOREFRONT',
+    statusBadge: 'LIVE PRODUCTION',
+    description: 'Architected and deployed Saffron, a production-grade restaurant operating system serving a 100-dish royal culinary catalog, 16-table contactless QR ordering, high-speed cashier POS terminal, kitchen display (KDS), and telemetry gateway on a modern SERN stack.',
+    problem: 'Restaurant operations experience severe bottlenecks during rush hours: table ordering delays, slow cashier billing, kitchen communication breakdowns, and database connection pool exhaustion under concurrent guest QR scans.',
+    solution: 'Engineered a decoupled two-tier architecture on Render pairing an ambient Three.js 3D client SPA with an autonomous load-resilient Express REST API featuring sub-15ms LRU caching, zero-crash process watchdog, 30s self-healing DB heartbeats, and restaurant-aware 3,500 req/15min smart rate limiting.',
+    keyMetrics: [
+      { icon: '⚡', title: 'Sub-15ms Hot Cache', subtitle: 'In-memory LRU cuts DB reads 80%' },
+      { icon: '🍽️', title: '16 Table QR Terminals', subtitle: 'Encrypted tokens (/table/1-16)' },
+      { icon: '🛡️', title: 'Zero-Crash Watchdog', subtitle: 'Process exception trapping & 30s recovery' },
+      { icon: '🎨', title: 'Three.js Ambient 3D', subtitle: 'Interactive WebGL hearth embers canvas' }
+    ],
+    architecture: [
+      'Two-Tier Decoupled Architecture: Static client SPA deployed on global CDN paired with dedicated Express REST API on Render via render.yaml.',
+      'Autonomous Load Agent: Sub-15ms in-memory LRU cache reducing database load by over 80%, zero-crash process exception watchdog, and 30s self-healing DB heartbeat.',
+      'Restaurant-Aware Smart Rate Limiter: Generous 3,500 req/15min allowance accommodating 50+ guests on shared Wi-Fi, with automatic exemption for staff POS/KDS JWT tokens.',
+      'Strict Relational Persistence (ACID): Supabase PostgreSQL with Prisma ORM ensuring strict relational integrity across orders, tables, staff, and pantry inventory.'
+    ],
+    engineeringHighlights: [
+      'Autonomous Load Agent & LRU Caching: Implemented an in-memory cache slashing database read queries by 80% and maintaining sub-15ms response times during simulated rush-hour surges.',
+      'Zero-Crash Process Watchdog & Self-Healing: Process-level runtime exception trapping preventing mid-service downtime with a 30s exponential backoff PostgreSQL heartbeat.',
+      'Restaurant-Aware Smart Rate Limiting: Configured 3,500 req/15min threshold supporting 50+ guests on a single restaurant Wi-Fi router with JWT bypass for staff workstations.',
+      'Three.js WebGL Ambient Canvas: Built an interactive WebGL canvas rendering warm hearth embers, 100-dish culinary catalog, and dual luxury theme support.',
+      'Decoupled Cloud Infrastructure: Engineered two-tier deployment on Render using Infrastructure as Code (render.yaml) with Supabase connection pooling.'
+    ],
+    tags: [
+      'React 19',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'Supabase (PostgreSQL)',
+      'Prisma ORM',
+      'Three.js (WebGL)',
+      'TanStack Router',
+      'Tailwind CSS',
+      'Render'
+    ],
+    githubUrl: 'https://github.com/omkhade75/restorant1',
+    liveUrl: 'https://restorant1-frontend.onrender.com',
+    demoCredentials: [
+      { role: 'Admin', email: 'om123@gmail.com', pass: '123456789' },
+      { role: 'Cashier POS', email: 'cashier@saffron.in', pass: '123456789' },
+      { role: 'Kitchen KDS', email: 'cook@saffron.in', pass: '123456789' }
+    ],
+    featured: true
   }
 ];
 

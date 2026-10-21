@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
               </span>
             </>
           }
-          description="Full-stack applications, local systems architectures, and enterprise AI platforms built by Om Khade — featuring an autonomous multi-tenant retail ERP, offline AI workstation, healthcare management, and voice agents."
+          description="Full-stack applications, local systems architectures, and enterprise AI platforms built by Om Khade — featuring an autonomous multi-tenant retail ERP, 3D restaurant operating system, offline AI workstation, healthcare management, and voice agents."
           action={
             <div className="flex flex-wrap items-center gap-1.5 neo-glass p-1.5 shadow-brutal">
               {categories.map((cat) => (
