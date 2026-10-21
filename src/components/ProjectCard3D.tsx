@@ -123,20 +123,15 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                 </span>
               </div>
 
-              {/* Title & Tagline */}
+              {/* Title & Core Tagline */}
               <div>
                 <h3 className="font-grotesk font-black text-lg sm:text-2xl lg:text-3xl text-[#121212] dark:text-white leading-snug group-hover:text-neo-blue transition-colors">
                   {project.title}
                 </h3>
-                <p className="font-body text-xs sm:text-sm font-bold text-neo-blue mt-0.5 sm:mt-1">
+                <p className="font-body text-xs sm:text-sm text-neo-dark dark:text-gray-300 font-medium leading-relaxed mt-1">
                   {project.tagline}
                 </p>
               </div>
-
-              {/* Description */}
-              <p className="font-body text-xs sm:text-sm text-neo-dark dark:text-gray-300 font-medium leading-relaxed">
-                {project.description}
-              </p>
 
               {/* Key Metrics Badges Bar */}
               {project.keyMetrics && project.keyMetrics.length > 0 && (
@@ -184,7 +179,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
               {/* Tech Chips */}
               {tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 pt-0.5">
-                  {tags.map((tag, tIdx) => (
+                  {tags.slice(0, 6).map((tag, tIdx) => (
                     <span
                       key={tIdx}
                       className="font-mono text-[10px] sm:text-[11px] font-bold bg-white/80 dark:bg-white/10 border border-[#121212] px-2.5 py-0.5 shadow-brutal-sm text-[#121212] dark:text-white hover:bg-neo-yellow hover:text-[#121212] transition-colors"
@@ -192,6 +187,14 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
                       #{tag}
                     </span>
                   ))}
+                  {tags.length > 6 && (
+                    <button
+                      onClick={() => onOpenModal(project)}
+                      className="font-mono text-[10px] sm:text-[11px] font-bold text-neo-subtle hover:text-neo-blue px-1.5 py-0.5 cursor-pointer"
+                    >
+                      +{tags.length - 6} more
+                    </button>
+                  )}
                 </div>
               )}
 
@@ -249,48 +252,55 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
               </div>
             </div>
 
-            {/* Right 5 Columns: Architecture Highlights & Spec Box */}
-            <div className="lg:col-span-5 space-y-2.5 neo-glass-subtle p-3.5 sm:p-4 shadow-brutal-sm">
-              <div className="border-b-2 border-[#121212] pb-1.5 flex items-center justify-between font-mono text-xs font-bold">
-                <span className="text-[#121212] dark:text-white uppercase">ENGINEERING SPECIFICATIONS</span>
-                <span className="text-neo-green font-bold flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> VERIFIED
-                </span>
+            {/* Right 5 Columns: Streamlined Engineering Highlights */}
+            <div className="lg:col-span-5 space-y-2.5 neo-glass-subtle p-3.5 sm:p-4 shadow-brutal-sm flex flex-col justify-between">
+              <div>
+                <div className="border-b-2 border-[#121212] pb-1.5 flex items-center justify-between font-mono text-xs font-bold mb-2">
+                  <span className="text-[#121212] dark:text-white uppercase">KEY ARCHITECTURAL HIGHLIGHTS</span>
+                  <span className="text-neo-green font-bold flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> VERIFIED
+                  </span>
+                </div>
+
+                {/* Streamlined Architecture Highlights (Top 3 core innovations) */}
+                {archList.length > 0 && (
+                  <div className="space-y-1.5">
+                    {archList.slice(0, 3).map((arch, aIdx) => {
+                      const colonIdx = arch.indexOf(':');
+                      const title = colonIdx > -1 ? arch.slice(0, colonIdx) : null;
+                      const body = colonIdx > -1 ? arch.slice(colonIdx + 1).trim() : arch;
+
+                      return (
+                        <div
+                          key={aIdx}
+                          className="bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2 shadow-brutal-sm flex items-start gap-2"
+                        >
+                          <span className="font-mono text-[9px] font-bold bg-[#121212] text-white px-1.5 py-0.5 shrink-0 mt-0.5">
+                            0{aIdx + 1}
+                          </span>
+                          <p className="font-body text-[11px] sm:text-xs text-neo-dark dark:text-gray-300 font-medium leading-relaxed">
+                            {title && (
+                              <strong className="text-[#121212] dark:text-white font-bold">
+                                {title}:{' '}
+                              </strong>
+                            )}
+                            {body}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
-              {/* Architecture list */}
-              {archList.length > 0 && (
-                <div className="space-y-1.5">
-                  {archList.slice(0, 4).map((arch, aIdx) => (
-                    <div
-                      key={aIdx}
-                      className="bg-white/90 dark:bg-white/10 backdrop-blur-sm border border-[#121212] p-2 shadow-brutal-sm flex items-start gap-2"
-                    >
-                      <span className="font-mono text-[9px] font-bold bg-[#121212] text-white px-1.5 py-0.5 shrink-0 mt-0.5">
-                        0{aIdx + 1}
-                      </span>
-                      <p className="font-body text-[11px] sm:text-xs text-neo-dark dark:text-gray-300 font-medium leading-relaxed">
-                        {arch}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Highlights */}
-              {highlights.length > 0 && (
-                <div className="space-y-1 pt-1 border-t border-[#121212]/20">
-                  {highlights.slice(0, 2).map((highlight, hIdx) => (
-                    <div
-                      key={hIdx}
-                      className="flex items-start gap-1.5 text-[11px] text-neo-dark dark:text-gray-300 font-medium"
-                    >
-                      <CheckCircle2 className="w-3 h-3 text-neo-green shrink-0 mt-0.5" />
-                      <span className="line-clamp-2">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {/* Quick Case Study Link */}
+              <button
+                onClick={() => onOpenModal(project)}
+                className="pt-2 border-t border-[#121212]/20 font-mono text-[10px] sm:text-[11px] font-bold text-neo-blue hover:text-neo-dark dark:hover:text-white flex items-center justify-between transition-colors cursor-pointer group"
+              >
+                <span>VIEW COMPLETE ARCHITECTURE & DATA FLOW</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+              </button>
             </div>
           </div>
         </div>
