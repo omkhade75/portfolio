@@ -86,7 +86,7 @@ export const ProjectCard3D: React.FC<ProjectCard3DProps> = ({
         className="w-full"
       >
         {/* 100% Solid Opaque Neo-Brutalist Frame (Zero Content Bleed-Through) */}
-        <div className="neo-box p-4 sm:p-6 lg:p-8 border-3 border-[#121212] shadow-brutal-xl relative overflow-hidden bg-[#FAF7F2] dark:bg-[#141419] w-full">
+        <div className="neo-box p-4 sm:p-6 lg:p-8 border-3 border-[#121212] shadow-brutal-xl relative overflow-hidden bg-[#FAF7F2] w-full">
           {/* Subtle Top Accent Border */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-neo-yellow border-b border-[#121212]" />
 

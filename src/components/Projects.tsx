@@ -16,7 +16,7 @@ export const Projects: React.FC = () => {
     : (PROJECTS || []).filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-24 border-b-3 border-[#121212] bg-[#FAF7F2] dark:bg-[#0B0B0F] transition-colors relative">
+    <section id="projects" className="py-12 sm:py-16 lg:py-24 border-b-3 border-[#121212] bg-[#FAF7F2] transition-colors relative">
       <div className="w-full max-w-[1600px] mx-auto px-3.5 sm:px-8 lg:px-12">
         {/* Section Header with Category Filters */}
         <SectionHeader
