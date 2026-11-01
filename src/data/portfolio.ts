@@ -275,6 +275,54 @@ export const PROJECTS: ProjectData[] = [
       { role: 'Kitchen KDS', email: 'cook@saffron.in', pass: '123456789' }
     ],
     featured: true
+  },
+  {
+    id: 'bizora-voice',
+    number: '06',
+    title: 'BIZORA VOICE (वाणी) — SOVEREIGN AI TELEPHONY ENGINE',
+    tagline: 'Full-duplex conversational voice AI cutting telecalling costs by 95% with sub-329ms latency & Indic fluency in Marathi, Hindi, Gujarati & English',
+    category: 'AI Platform',
+    accentColor: 'bg-neo-blue text-white',
+    badge: 'TELEPHONY & REAL-TIME VOICE AI',
+    statusBadge: 'LIVE PRODUCTION',
+    description: 'Architected a sovereign, full-duplex conversational voice AI platform cutting telecalling costs by 95% with sub-329ms turnaround latency. Features streaming duplex WebSockets, Silero VAD barge-in interruption, multi-agent Squads warm handoffs, and dual telephony bridging Twilio SIP with 4G VoLTE GSM gateways.',
+    problem: 'Commercial voice platforms (Vapi.ai, Bland.ai) charge high $0.18/min SaaS markups, route sensitive customer data to US cloud clusters, suffer from 800–1200ms latency, and struggle with Indic accents, agricultural terms (mandi rates, quintals), and code-mixed speech.',
+    solution: 'Engineered a sovereign sub-329ms voice pipeline combining Silero VAD, Google Gemini 2.5 Flash, on-device Ollama LLMs, and streaming Edge Neural TTS over duplex WebSockets, integrated with dual telephony (Twilio Cloud SIP + physical 4G VoLTE GSM gateways for ₹299/month unlimited domestic calling).',
+    keyMetrics: [
+      { icon: '⚡', title: 'Sub-329ms Turnaround', subtitle: 'Full-duplex WebSocket streaming' },
+      { icon: '💰', title: '95% Cost Reduction', subtitle: '4G VoLTE GSM vs $0.18/min SaaS' },
+      { icon: '🗣️', title: '4 Indic Languages', subtitle: 'Marathi, Hindi, Gujarati & English' },
+      { icon: '🛡️', title: '0.00% Failure (k6)', subtitle: '100% check pass rate under load' }
+    ],
+    architecture: [
+      'Sub-329ms Conversational Pipeline: Audio flows from browser WebRTC/phone lines through FastAPI duplex WebSockets (24ms) → Silero VAD (15ms) → Gemini 2.5 Flash / Ollama (110ms) → Streaming Edge Neural TTS (95ms).',
+      'Dual Telephony Infrastructure: Seamlessly bridges Twilio Cloud SIP Media Streams with physical 4G VoLTE GSM hardware gateways, eliminating carrier sandbox restrictions and per-minute US SaaS fees.',
+      'Multi-Agent Squads Orchestration: Enables zero-latency mid-call warm handoffs between specialized AI bots (Inbound Receptionist → Regional Language Closer → Billing Desk) with synchronized conversational state.',
+      'Bulk Outbound Engine & Observability: Automated CSV/CRM contact list ingestion with dynamic speech variable templating, real-time audio waveform visualizer, and k6-benchmarked 0.00% error rate.'
+    ],
+    engineeringHighlights: [
+      'Full-Duplex Sub-329ms Telephony: Engineered streaming WebSockets with Silero Voice Activity Detection (VAD) for natural caller barge-in interruptions.',
+      'Dual Telephony Architecture: Integrated Twilio SIP Media Streams with 4G VoLTE GSM gateways, cutting outbound telecalling expenses by 95%.',
+      'Multi-Agent Squads Engine: Built zero-latency warm bot-to-bot handoffs with shared conversational context and webhook tool execution.',
+      'Multilingual Indic Personas: Tuned specialized neural voices across Marathi (AarohiNeural), Hindi (MadhurNeural), Gujarati (DhwaniNeural), and Indian English.',
+      'Automated QA Rubric Evaluations: Integrated automatic evaluation scoring for intent extraction accuracy, response politeness, and hallucination prevention.'
+    ],
+    tags: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'FastAPI (Python 3.13)',
+      'WebSockets',
+      'Supabase (PostgreSQL)',
+      'Silero VAD',
+      'Google Gemini 2.5',
+      'Ollama (Qwen 2.5)',
+      'Twilio SIP',
+      'Edge Neural TTS'
+    ],
+    githubUrl: 'https://github.com/omkhade75/BizoraVoice',
+    liveUrl: 'https://bizora-voice-static.onrender.com',
+    featured: true
   }
 ];
 

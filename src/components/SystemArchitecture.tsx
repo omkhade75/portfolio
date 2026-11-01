@@ -248,6 +248,50 @@ export const SystemArchitecture: React.FC = () => {
         }
       ],
       impact: 'Sub-15ms LRU hot cache response, 80% reduction in database read load, zero mid-service crashes, and unified 16-table QR and cashier POS coordination.'
+    },
+    {
+      id: 'bizora-voice',
+      systemName: 'Bizora Voice (वाणी) — Sovereign AI Telephony & Multilingual Voice Engine',
+      role: 'Full-Duplex Telephony Pipeline & Sub-329ms Voice AI',
+      badge: 'REAL-TIME VOICE AI & TELEPHONY',
+      accent: 'bg-neo-blue text-white',
+      problem: 'High $0.18/min SaaS fees, 800-1200ms lag, US data routing, and poor recognition of regional Indic accents and code-mixed dialects.',
+      solution: 'Engineered a sovereign sub-329ms voice pipeline combining Silero VAD, Gemini 2.5 Flash, Ollama, streaming Neural TTS, and 4G VoLTE GSM gateways for ₹299/mo calling.',
+      layers: [
+        {
+          name: 'INGESTION & VAD LAYER',
+          tech: 'FastAPI Duplex WebSockets • Silero VAD (15ms) • 16kHz PCM',
+          icon: Globe,
+          detail: 'Ingests browser WebRTC audio and Twilio media streams, running Silero Voice Activity Detection in 15ms for instant caller barge-in interruptions.',
+          problemSolved: 'Robotic, unnatural turn-taking and inability for callers to interrupt the AI mid-sentence.',
+          systemImpact: 'Human-like conversational interruption dynamics with instantaneous playback muting.'
+        },
+        {
+          name: 'REASONING & MULTI-AGENT SWARMS',
+          tech: 'Google Gemini 2.5 Flash • Ollama (Qwen 2.5) • Squads Router',
+          icon: Cpu,
+          detail: '110ms dual-engine inference routing simple queries to local Ollama and nuanced business logic to Gemini 2.5, with mid-call warm bot handoffs.',
+          problemSolved: 'Single-bot cognitive overload, hallucinated specialized policies, and vendor lock-in.',
+          systemImpact: 'Zero-latency warm transfers between specialized bots (Receptionist → Closer → Billing Desk).'
+        },
+        {
+          name: 'STREAMING NEURAL TTS',
+          tech: 'Edge Neural Indic TTS • 24kHz HD PCM Chunk Streaming',
+          icon: Server,
+          detail: 'Sentence-boundary chunk streaming synthesizer delivering 95ms voice delivery across Marathi (Aarohi), Hindi (Madhur), Gujarati (Dhwani), and English.',
+          problemSolved: 'Buffering whole audio files before speaking, adding 1-2 seconds of dead air.',
+          systemImpact: 'Sub-329ms total end-to-end turnaround latency with natural Indic inflection and cadence.'
+        },
+        {
+          name: 'DUAL TELEPHONY INFRASTRUCTURE',
+          tech: 'Twilio Cloud SIP • Physical 4G VoLTE GSM Hardware Gateways',
+          icon: Database,
+          detail: 'Hybrid telephony enabling dynamic switching between Twilio Cloud SIP and on-premise 4G VoLTE SIM gateways with unlimited domestic calling.',
+          problemSolved: 'Unsustainable $0.18/min US cloud billing and carrier SMS OTP sandbox restrictions on cold calling.',
+          systemImpact: 'Cuts outbound telecalling costs by 95% at ₹299/month with 0.00% k6 load test failure.'
+        }
+      ],
+      impact: 'Sub-329ms end-to-end latency, 95% telecalling cost reduction, 0.00% k6 failure rate, and native fluency across 4 Indic languages.'
     }
   ];
 
